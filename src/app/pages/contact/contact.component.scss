@@ -189,14 +189,40 @@
   }
 
   .hq-entry {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    padding: 1rem 1.15rem;
+    border-radius: var(--radius-md);
+
+    &.branch-entry {
+      background: #F8FAFD;
+      border-color: #CBD5E1;
+    }
+
     strong {
       display: block;
       font-size: 0.82rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--color-text-muted);
-      margin-bottom: 0.25rem;
+      letter-spacing: 0.02em;
+      color: var(--color-primary-800);
+      margin-bottom: 0.35rem;
+    }
+
+    .address-text {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--color-text-main);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .phone-link a {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-primary-600);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      &:hover { color: var(--color-sky-500); }
     }
 
     p {
@@ -218,18 +244,12 @@
     display: inline-block;
     background: #EFF6FF;
     color: var(--color-primary-700);
-    padding: 0.35rem 0.75rem;
-    border-radius: var(--radius-md);
-    font-size: 0.85rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
     font-weight: 700;
     border: 1px solid #BAE0FD;
-    margin-bottom: 0.25rem;
-  }
-
-  .sub-coord {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
+    margin-top: 0.2rem;
   }
 
   .hq-directions-action {

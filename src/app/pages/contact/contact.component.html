@@ -8,7 +8,7 @@
       </span>
       <h1 class="banner-title">Contact Our Engineering &amp; GIS Consultation Team</h1>
       <p class="banner-subtitle">
-        Headquartered in Seminary Hills, Nagpur. Reach out for technical feasibility studies, drone surveys, or turnkey solar project proposals.
+        Corporate Headquarters in Wadegaon, Sadak Arjuni, Dist. Gondia and Regional Engineering Lab in Seminary Hills, Nagpur. Reach out for technical feasibility studies, drone surveys, or turnkey solar project proposals.
       </p>
     </div>
   </div>
@@ -77,7 +77,7 @@
                        formControlName="phone" 
                        class="form-control" 
                        [class.is-invalid]="f['phone'].touched && f['phone'].invalid" 
-                       placeholder="+91 98765 43210" />
+                       placeholder="+91 98229 41438" />
                 @if (f['phone'].touched && f['phone'].invalid) {
                   <span class="invalid-feedback">Please enter a valid 10-digit mobile number.</span>
                 }
@@ -103,7 +103,7 @@
                        formControlName="projectLocation" 
                        class="form-control" 
                        [class.is-invalid]="f['projectLocation'].touched && f['projectLocation'].invalid" 
-                       placeholder="e.g. Butibori MIDC, Nagpur" />
+                       placeholder="e.g. Gondia / Butibori MIDC, Nagpur" />
                 @if (f['projectLocation'].touched && f['projectLocation'].invalid) {
                   <span class="invalid-feedback">Please provide the project location or city.</span>
                 }
@@ -156,37 +156,43 @@
           <div class="hq-head">
             <img src="assets/images/logo/arnav-logo.png" alt="Arnav Power Solution & Services" class="hq-brand-logo" />
             <div>
-              <h3>Corporate Headquarters</h3>
+              <h3>Corporate Office</h3>
               <span>Arnav Power Solution &amp; Services</span>
             </div>
           </div>
 
           <div class="hq-content">
+            <!-- 1. Main Corporate Address -->
             <div class="hq-entry">
-              <strong>Office Address:</strong>
-              <p>{{ companyDetails.addressLine1 }}<br />{{ companyDetails.addressLine2 }}</p>
-            </div>
-
-            <div class="hq-entry">
-              <strong>Geographical Coordinates:</strong>
+              <strong class="entry-title-badge">🏢 Corporate Address (Main Branch):</strong>
+              <p class="address-text">{{ companyDetails.addressLine1 }}<br />{{ companyDetails.addressLine2 }}</p>
               <div class="coord-badge-tag font-mono-num">
                 📍 {{ companyDetails.coordinates.formatted }}
               </div>
-              <span class="sub-coord font-mono-num">(Lat: {{ companyDetails.coordinates.latitude }}, Lng: {{ companyDetails.coordinates.longitude }})</span>
+            </div>
+
+            <!-- 2. Regional Engineering Branch (Nagpur) -->
+            <div class="hq-entry branch-entry">
+              <strong class="entry-title-badge branch-badge">🛰️ Regional Engineering Branch:</strong>
+              <p class="address-text">{{ companyDetails.branchAddressLine1 }}<br />{{ companyDetails.branchAddressLine2 }}</p>
+              <div class="coord-badge-tag font-mono-num">
+                📍 {{ companyDetails.nagpurCoordinates.formatted }}
+              </div>
+            </div>
+
+            <!-- Contact numbers -->
+            <div class="hq-entry">
+              <strong>📞 Direct Phone / WhatsApp:</strong>
+              <p class="phone-link"><a [href]="'tel:+919822941438'">+91 98229 41438</a></p>
             </div>
 
             <div class="hq-entry">
-              <strong>Direct Phone:</strong>
-              <p><a [href]="'tel:' + companyDetails.phone">{{ companyDetails.phone }}</a></p>
-            </div>
-
-            <div class="hq-entry">
-              <strong>Email Inquiries:</strong>
+              <strong>✉️ Email Inquiries:</strong>
               <p><a [href]="'mailto:' + companyDetails.email">{{ companyDetails.email }}</a></p>
             </div>
 
             <div class="hq-entry">
-              <strong>Operations Hours:</strong>
+              <strong>⏰ Working Hours:</strong>
               <p>{{ companyDetails.workingHours }}</p>
             </div>
 
@@ -209,10 +215,10 @@
     <app-section-header
       badge="Visit Our Office"
       badgeType="gis"
-      title="Visit Our Office in Seminary Hills, Nagpur"
-      subtitle="Easily accessible from Civil Lines and Amravati Road. Custom branded map marker centered at our corporate premises.">
+      title="Corporate Office &amp; Regional Engineering Branches"
+      subtitle="Main branch in Wadegaon, Sadak Arjuni (Dist. Gondia) and Regional Engineering Lab in Seminary Hills (Nagpur). Custom branded map markers with interactive navigation.">
     </app-section-header>
 
-    <app-leaflet-map [initialZoom]="13" [showSidebar]="true" filterDomain="all"></app-leaflet-map>
+    <app-leaflet-map [initialZoom]="10" [showSidebar]="true" filterDomain="all"></app-leaflet-map>
   </div>
 </section>

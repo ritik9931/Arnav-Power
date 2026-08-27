@@ -70,18 +70,33 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
   private prepareMarkerData() {
     const list: MapMarkerItem[] = [];
 
-    // 1. Corporate HQ
+    // 1. Corporate HQ (Wadegaon, Sadak Arjuni, Gondia)
     const hq = this.contactService.companyDetails;
     list.push({
-      id: 'hq-nagpur',
-      title: hq.name,
-      category: 'Corporate Headquarters',
+      id: 'hq-gondia',
+      title: `${hq.name} (Corporate Office)`,
+      category: 'Corporate Address (Main Branch)',
       domain: 'hq',
       client: 'Arnav Power Solution & Services',
       location: `${hq.addressLine1}, ${hq.addressLine2}`,
-      capacityOrScale: 'Main Operations & GIS Engineering Lab',
+      capacityOrScale: 'Corporate Head Office & Central Management',
       coordinates: { lat: hq.coordinates.latitude, lng: hq.coordinates.longitude },
       image: 'assets/images/hero/about-team.jpg',
+      link: '/contact',
+      isHq: true
+    });
+
+    // 2. Regional Engineering & GIS Operations (Nagpur)
+    list.push({
+      id: 'branch-nagpur',
+      title: `${hq.name} (Regional Branch)`,
+      category: 'Regional Engineering & GIS Lab',
+      domain: 'hq',
+      client: 'Arnav Power Solution & Services',
+      location: `${hq.branchAddressLine1}, ${hq.branchAddressLine2}`,
+      capacityOrScale: 'Regional Operations & Survey Field Teams',
+      coordinates: { lat: hq.nagpurCoordinates.latitude, lng: hq.nagpurCoordinates.longitude },
+      image: 'assets/images/hero/gis-survey-hero.jpg',
       link: '/contact',
       isHq: true
     });
