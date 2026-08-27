@@ -1,84 +1,99 @@
-<!-- Top Info Bar -->
-<div class="topbar">
-  <div class="container topbar-container">
-    <div class="topbar-left">
-      <div class="topbar-item">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Wadegaon, Sadak Arjuni, Dist. Gondia | Seminary Hills, Nagpur</span>
+<header class="site-header">
+  <!-- Top Info Bar (Natural document flow - scrolls away on page scroll) -->
+  <div class="topbar" #topbarRef>
+    <div class="container topbar-container">
+      <!-- Desktop Left / Mobile Location -->
+      <div class="topbar-left">
+        <div class="topbar-item topbar-location">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="desktop-location">Wadegaon, Sadak Arjuni, Dist. Gondia | Seminary Hills, Nagpur</span>
+          <span class="mobile-location">Wadegaon, Gondia / Nagpur</span>
+        </div>
+        <div class="topbar-item topbar-phone hide-tablet">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+919527010319">+91 95270 10319</a>
+        </div>
       </div>
-      <div class="topbar-item hide-mobile">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>+91 98229 41438</span>
-      </div>
-    </div>
-    <div class="topbar-right">
-      <span class="cert-tag">ISO 9001:2015 &amp; MNRE Compliant</span>
-      <div class="status-indicator">
-        <span class="status-dot"></span>
-        <span>Field Operations Active</span>
+
+      <!-- Right: Badges on Desktop, Phone on Mobile -->
+      <div class="topbar-right">
+        <div class="mobile-phone-wrap show-mobile-only">
+          <a href="tel:+919527010319" class="mobile-topbar-call">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 95270 10319</span>
+          </a>
+        </div>
+        <span class="cert-tag hide-mobile">ISO 9001:2015 &amp; MNRE Compliant</span>
+        <div class="status-indicator hide-mobile">
+          <span class="status-dot"></span>
+          <span>Field Operations Active</span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Main Sticky Glass Navbar -->
-<header class="navbar-header" [class.is-scrolled]="isScrolled()">
-  <div class="container navbar-container">
-    <!-- Official Brand Logo -->
-    <a routerLink="/home" class="navbar-brand" (click)="closeMobileMenu()">
-      <img src="assets/images/logo/arnav-logo.png" alt="Arnav Power Solution & Services Logo" class="brand-logo" />
-      <div class="brand-text-block">
-        <span class="brand-title">ARNAV POWER</span>
-        <span class="brand-sub">SOLUTION &amp; SERVICES</span>
-      </div>
-    </a>
-
-    <!-- Desktop Navigation Links -->
-    <nav class="desktop-nav">
-      <ul class="nav-list">
-        @for (link of navLinks; track link.path) {
-          <li class="nav-item">
-            <a [routerLink]="link.path" 
-               routerLinkActive="active" 
-               [routerLinkActiveOptions]="{ exact: link.path === '/home' }"
-               class="nav-link">
-              {{ link.label }}
-              <span class="nav-indicator"></span>
-            </a>
-          </li>
-        }
-      </ul>
-    </nav>
-
-    <!-- Desktop CTA Button -->
-    <div class="navbar-cta hide-mobile">
-      <a routerLink="/contact" class="btn btn-primary btn-sm">
-        <span>Get a Consultation</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  <!-- Main Navigation Bar (Becomes position: fixed at top: 0 after scrolling past topbar) -->
+  <nav class="main-navbar" #navbarRef [class.is-fixed]="isNavbarFixed()" [class.scrolled]="isScrolled()">
+    <div class="container navbar-container">
+      <!-- Official Brand Logo -->
+      <a routerLink="/home" class="navbar-brand" (click)="closeMobileMenu()">
+        <img src="assets/images/logo/arnav-logo.png" alt="Arnav Power Solution Services Logo" class="brand-logo" />
+        <div class="brand-text-block">
+          <span class="brand-title">ARNAV POWER</span>
+          <span class="brand-sub">SOLUTION SERVICES</span>
+        </div>
       </a>
-    </div>
 
-    <!-- Mobile Menu Toggle Button -->
-    <button class="mobile-toggle" 
-            (click)="toggleMobileMenu()" 
-            [attr.aria-expanded]="isMobileMenuOpen()" 
-            aria-label="Toggle navigation menu">
-      <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
-      <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
-      <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
-    </button>
-  </div>
+      <!-- Desktop Navigation Links -->
+      <div class="desktop-nav">
+        <ul class="nav-list">
+          @for (link of navLinks; track link.path) {
+            <li class="nav-item">
+              <a [routerLink]="link.path" 
+                 routerLinkActive="active" 
+                 [routerLinkActiveOptions]="{ exact: link.path === '/home' }"
+                 class="nav-link">
+                {{ link.label }}
+                <span class="nav-indicator"></span>
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Desktop CTA Button -->
+      <div class="navbar-cta hide-mobile">
+        <a routerLink="/contact" class="btn btn-primary btn-sm">
+          <span>Get a Consultation</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" 
+              (click)="toggleMobileMenu()" 
+              [attr.aria-expanded]="isMobileMenuOpen()" 
+              aria-label="Toggle navigation menu">
+        <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+        <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+        <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Dynamic Navbar Spacer (Preserves space when navbar becomes fixed, preventing any layout jumps) -->
+  <div class="navbar-spacer" [style.height.px]="isNavbarFixed() ? navbarHeight() : 0"></div>
 </header>
 
-<!-- Mobile Slide-In Menu Drawer -->
+<!-- Mobile Slide-In Menu Drawer Overlay & Content (z-index: 1100 / 1200) -->
 <div class="mobile-drawer-overlay" [class.open]="isMobileMenuOpen()" (click)="closeMobileMenu()"></div>
 <div class="mobile-drawer" [class.open]="isMobileMenuOpen()">
   <div class="drawer-header">
     <div class="drawer-logo-wrap">
-      <img src="assets/images/logo/arnav-logo.png" alt="Arnav Power Logo" class="drawer-logo" />
+      <img src="assets/images/logo/arnav-logo.png" alt="Arnav Power Solution Services Logo" class="drawer-logo" />
       <div class="brand-text-block">
         <span class="brand-title">ARNAV POWER</span>
-        <span class="brand-sub">SOLUTION &amp; SERVICES</span>
+        <span class="brand-sub">SOLUTION SERVICES</span>
       </div>
     </div>
     <button class="drawer-close" (click)="closeMobileMenu()" aria-label="Close menu">
@@ -108,14 +123,14 @@
 
     <div class="drawer-cta">
       <a routerLink="/contact" class="btn btn-primary" (click)="closeMobileMenu()" style="width: 100%;">
-        <span>Get a Free Consultation</span>
+        <span>Get a Consultation</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
       
       <div class="drawer-contact-info">
         <p><strong>Corporate Address:</strong> Near Bus Stand, Main Road, Wadegaon, Sadak Arjuni, Dist. Gondia – 441807</p>
         <p><strong>Regional Branch:</strong> Seminary Hills, Civil Line, Nagpur – 440006</p>
-        <p><strong>Direct Phone:</strong> +91 98229 41438</p>
+        <p><strong>Direct Phone:</strong> +91 95270 10319</p>
       </div>
     </div>
   </div>

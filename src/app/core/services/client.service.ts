@@ -55,7 +55,7 @@ export class ClientService {
       logoBg: '#0A2540',
       initials: 'MSEDCL',
       rating: 5,
-      testimonial: 'Arnav Power Solution & Services executed high-density electrical consumer indexing and substation asset geocoding with remarkable speed and precision.',
+      testimonial: 'Arnav Power Solution Services executed high-density electrical consumer indexing and substation asset geocoding with remarkable speed and precision.',
       spokesperson: 'Superintending Engineer',
       designation: 'MSEDCL Urban Infrastructure Division'
     },

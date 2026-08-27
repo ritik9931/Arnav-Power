@@ -16,7 +16,7 @@ export interface ContactFormData {
 })
 export class ContactService {
   readonly companyDetails = {
-    name: 'Arnav Power Solution & Services',
+    name: 'Arnav Power Solution Services',
     // Corporate Address (Main Branch Location)
     corporateAddressTitle: 'Corporate Address (Main Branch)',
     addressLine1: 'Near Bus Stand, Main Road, Wadegaon',
@@ -42,7 +42,7 @@ export class ContactService {
     googleMapsUrl: 'https://www.google.com/maps/place/Arnav+power+solution+services/@21.1064934,80.1542061,333m/data=!3m1!1e3!4m6!3m5!1s0x3a2b9f00316f2ec1:0xc8460cb9507a70ac!8m2!3d21.1064904!4d80.1546792!16s%2Fg%2F11nv6sm0rv',
     email: 'info@arnavpower.com',
     supportEmail: 'projects@arnavpower.com',
-    phone: '+91 98229 41438',
+    phone: '+91 95270 10319',
     workingHours: 'Monday - Saturday: 9:30 AM - 6:30 PM IST'
   };
 

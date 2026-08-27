@@ -1,5 +1,5 @@
-import { Component, HostListener, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, HostListener, signal, ViewChild, ElementRef, AfterViewInit, inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,9 +9,17 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements AfterViewInit {
+  private platformId = inject(PLATFORM_ID);
+
+  @ViewChild('topbarRef', { static: false }) topbarRef?: ElementRef<HTMLDivElement>;
+  @ViewChild('navbarRef', { static: false }) navbarRef?: ElementRef<HTMLElement>;
+
+  isNavbarFixed = signal(false);
   isScrolled = signal(false);
   isMobileMenuOpen = signal(false);
+  topbarHeight = signal(38);
+  navbarHeight = signal(74);
 
   navLinks = [
     { label: 'Home', path: '/home' },
@@ -23,9 +31,41 @@ export class NavbarComponent {
     { label: 'Contact Us', path: '/contact' }
   ];
 
+  ngAfterViewInit() {
+    this.measureHeights();
+  }
+
+  @HostListener('window:resize')
+  onWindowResize() {
+    this.measureHeights();
+    this.checkScrollPosition();
+  }
+
   @HostListener('window:scroll')
   onWindowScroll() {
-    this.isScrolled.set(window.scrollY > 25);
+    this.checkScrollPosition();
+  }
+
+  private measureHeights() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    if (this.topbarRef?.nativeElement) {
+      const tbH = this.topbarRef.nativeElement.offsetHeight;
+      if (tbH > 0) this.topbarHeight.set(tbH);
+    }
+    if (this.navbarRef?.nativeElement) {
+      const nbH = this.navbarRef.nativeElement.offsetHeight;
+      if (nbH > 0) this.navbarHeight.set(nbH);
+    }
+  }
+
+  private checkScrollPosition() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    const threshold = this.topbarHeight() > 0 ? this.topbarHeight() : 38;
+
+    // When scrolling past topbar, fix the navbar at top: 0 permanently
+    this.isNavbarFixed.set(scrollY >= threshold);
+    this.isScrolled.set(scrollY > threshold + 10);
   }
 
   toggleMobileMenu() {
