@@ -1,0 +1,79 @@
+<!-- Hero Banner -->
+<section class="clients-banner">
+  <div class="container">
+    <div class="banner-content">
+      <span class="badge-tag badge-dark">
+        <span class="badge-dot"></span>
+        Enterprise Partnerships
+      </span>
+      <h1 class="banner-title">Our Clients &amp; Industry Partnerships</h1>
+      <p class="banner-subtitle">
+        Trusted by state power utilities, industrial manufacturing corporations, smart city bodies, and infrastructure developers across Maharashtra and Central India.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Main Clients Showcase -->
+<section class="section-py bg-soft">
+  <div class="container">
+    <!-- Sector Filter Toolbar -->
+    <div class="sector-tabs-row">
+      @for (sec of sectors; track sec) {
+        <button class="sector-tab-btn" [class.active]="selectedSector() === sec" (click)="setSector(sec)">
+          {{ sec }}
+        </button>
+      }
+    </div>
+
+    <!-- Clients Cards Grid -->
+    <div class="clients-grid">
+      @for (client of filteredClients(); track client.id) {
+        <div class="client-corporate-card">
+          <div class="card-head">
+            <div class="client-logo-badge" [style.background-color]="client.logoBg">
+              {{ client.initials }}
+            </div>
+            <div class="client-head-info">
+              <span class="sector-badge">{{ client.sector }}</span>
+              <h3 class="client-title">{{ client.name }}</h3>
+              <span class="client-location">📍 {{ client.location }}</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="project-type-box">
+              <span class="pt-label">Scope of Engagement</span>
+              <p class="pt-val">{{ client.projectType }}</p>
+            </div>
+
+            @if (client.testimonial) {
+              <div class="testimonial-box">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="quote">"{{ client.testimonial }}"</p>
+                <div class="author-meta">
+                  <strong>{{ client.spokesperson }}</strong>
+                  <span>{{ client.designation }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Trust Banner -->
+<section class="section-py bg-dark-navy">
+  <div class="container text-center">
+    <h2 style="color: #FFF; font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem;">Join Over 500+ Satisfied Organizations</h2>
+    <p style="color: #CBD5E1; max-width: 680px; margin: 0 auto 2.25rem; font-size: 1.05rem;">
+      Partner with Arnav Power Solution &amp; Services for your next municipal GIS mapping, landbase survey, or commercial/industrial solar energy installation.
+    </p>
+    <a routerLink="/contact" class="btn btn-solar btn-lg">
+      <span>Initiate Corporate Consultation</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>

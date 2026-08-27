@@ -1,0 +1,199 @@
+.solar-projects-banner {
+  background: linear-gradient(135deg, #0A2540 0%, #081B30 60%, #B45309 100%);
+  padding: 5rem 0 4.5rem;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 176, 32, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 176, 32, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+.banner-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+
+  .banner-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+
+    @media (min-width: 768px) {
+      font-size: 3.25rem;
+    }
+  }
+
+  .banner-subtitle {
+    font-size: 1.1rem;
+    color: #CBD5E1;
+    line-height: 1.65;
+  }
+}
+
+.filter-toolbar-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-surface-border);
+  padding: 1.25rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.toolbar-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .toolbar-lbl {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+  }
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+
+  .cat-btn {
+    background: var(--color-surface-soft);
+    border: 1px solid #E2E8F0;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text-body);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-solar-amber);
+      background: #FFFBEB;
+    }
+
+    &.active {
+      background: var(--color-solar-dark);
+      border-color: var(--color-solar-dark);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+    }
+  }
+}
+
+.toolbar-right {
+  .search-input-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 280px;
+
+    svg {
+      position: absolute;
+      left: 1rem;
+      color: #94A3B8;
+    }
+
+    .search-field {
+      width: 100%;
+      padding: 0.65rem 1rem 0.65rem 2.75rem;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--color-surface-border);
+      font-size: 0.88rem;
+      outline: none;
+      transition: all 0.2s ease;
+
+      &:focus {
+        border-color: var(--color-solar-orange);
+        box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.12);
+      }
+    }
+  }
+}
+
+.solar-projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1440px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.solar-item-wrapper {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  display: flex;
+
+  app-project-card {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+  }
+}
+
+.no-results-box {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1px dashed var(--color-surface-border);
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 500px;
+  margin: 2rem auto;
+
+  .no-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    color: var(--color-text-main);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+  }
+}

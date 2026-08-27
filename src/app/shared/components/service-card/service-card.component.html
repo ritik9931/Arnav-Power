@@ -1,0 +1,55 @@
+<div class="service-card" [class.is-solar]="service.category === 'solar'" [class.is-gis]="service.category === 'gis'">
+  <!-- Image Box with Overlay -->
+  <div class="service-image-box">
+    <img [src]="service.image" [alt]="service.title" loading="lazy" class="service-img" />
+    <div class="image-overlay"></div>
+    <span class="category-pill" [class.pill-solar]="service.category === 'solar'" [class.pill-gis]="service.category === 'gis'">
+      {{ service.category === 'solar' ? 'Solar Power' : 'GIS & Survey' }}
+    </span>
+  </div>
+
+  <!-- Card Body -->
+  <div class="service-body">
+    <div class="service-icon-wrap" [class.icon-solar]="service.category === 'solar'" [class.icon-gis]="service.category === 'gis'">
+      @if (service.category === 'solar') {
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+      }
+    </div>
+
+    <h3 class="service-title">{{ service.title }}</h3>
+    <p class="service-tagline">{{ service.tagline }}</p>
+    <p class="service-desc">{{ service.shortDesc }}</p>
+
+    <!-- Key Features Checklist -->
+    <div class="service-features">
+      @for (feat of service.features.slice(0, 3); track feat) {
+        <div class="feature-item">
+          <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>{{ feat }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- Metrics Bar (if available) -->
+    @if (service.metrics && service.metrics.length > 0) {
+      <div class="service-metrics-strip">
+        @for (m of service.metrics; track m.label) {
+          <div class="metric-block">
+            <span class="m-val">{{ m.value }}</span>
+            <span class="m-lbl">{{ m.label }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Action Link -->
+    <div class="service-action">
+      <a [routerLink]="routerLinkPath" class="service-btn" [class.btn-solar-action]="service.category === 'solar'" [class.btn-gis-action]="service.category === 'gis'">
+        <span>Learn More &amp; Inquire</span>
+        <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>

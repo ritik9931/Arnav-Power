@@ -1,0 +1,122 @@
+<!-- Top Info Bar -->
+<div class="topbar">
+  <div class="container topbar-container">
+    <div class="topbar-left">
+      <div class="topbar-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Seminary Hills, Nagpur, Maharashtra (21.1691° N, 79.0427° E)</span>
+      </div>
+      <div class="topbar-item hide-mobile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span>info&#64;arnavpower.com</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="cert-tag">ISO 9001:2015 &amp; MNRE Compliant</span>
+      <div class="status-indicator">
+        <span class="status-dot"></span>
+        <span>Field Operations Active</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Sticky Glass Navbar -->
+<header class="navbar-header" [class.is-scrolled]="isScrolled()">
+  <div class="container navbar-container">
+    <!-- Official Brand Logo -->
+    <a routerLink="/home" class="navbar-brand" (click)="closeMobileMenu()">
+      <img src="assets/images/logo/arnav-logo.png" alt="Arnav Power Solution & Services Logo" class="brand-logo" />
+      <div class="brand-text-block">
+        <span class="brand-title">ARNAV POWER</span>
+        <span class="brand-sub">SOLUTION &amp; SERVICES</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav">
+      <ul class="nav-list">
+        @for (link of navLinks; track link.path) {
+          <li class="nav-item">
+            <a [routerLink]="link.path" 
+               routerLinkActive="active" 
+               [routerLinkActiveOptions]="{ exact: link.path === '/home' }"
+               class="nav-link">
+              {{ link.label }}
+              <span class="nav-indicator"></span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Desktop CTA Button -->
+    <div class="navbar-cta hide-mobile">
+      <a routerLink="/contact" class="btn btn-primary btn-sm">
+        <span>Get a Consultation</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-toggle" 
+            (click)="toggleMobileMenu()" 
+            [attr.aria-expanded]="isMobileMenuOpen()" 
+            aria-label="Toggle navigation menu">
+      <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+      <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+      <span class="hamburger-bar" [class.open]="isMobileMenuOpen()"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Slide-In Menu Drawer -->
+<div class="mobile-drawer-overlay" [class.open]="isMobileMenuOpen()" (click)="closeMobileMenu()"></div>
+<div class="mobile-drawer" [class.open]="isMobileMenuOpen()">
+  <div class="drawer-header">
+    <div class="drawer-logo-wrap">
+      <img src="assets/images/logo/arnav-logo.png" alt="Arnav Power Logo" class="drawer-logo" />
+      <div class="brand-text-block">
+        <span class="brand-title">ARNAV POWER</span>
+        <span class="brand-sub">SOLUTION &amp; SERVICES</span>
+      </div>
+    </div>
+    <button class="drawer-close" (click)="closeMobileMenu()" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="drawer-body">
+    <div class="drawer-tagline">
+      <span>Engineering Intelligence. Mapping Precision. Sustainable Power.</span>
+    </div>
+
+    <ul class="mobile-nav-list">
+      @for (link of navLinks; track link.path) {
+        <li>
+          <a [routerLink]="link.path" 
+             routerLinkActive="active" 
+             [routerLinkActiveOptions]="{ exact: link.path === '/home' }"
+             (click)="closeMobileMenu()"
+             class="mobile-nav-link">
+            <span>{{ link.label }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="drawer-cta">
+      <a routerLink="/contact" class="btn btn-primary" (click)="closeMobileMenu()" style="width: 100%;">
+        <span>Get a Free Consultation</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      
+      <div class="drawer-contact-info">
+        <p><strong>Headquarters:</strong> Seminary Hills, Civil Line, Nagpur, Maharashtra</p>
+        <p><strong>Coordinates:</strong> 21.169158 N, 79.042789 E</p>
+        <p><strong>Contact:</strong> +91 94221 00000</p>
+      </div>
+    </div>
+  </div>
+</div>

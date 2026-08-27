@@ -1,0 +1,214 @@
+.clients-banner {
+  background: linear-gradient(135deg, #051426 0%, #0A2540 60%, #0052CC 100%);
+  padding: 5rem 0 4.5rem;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(0, 210, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 210, 255, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+.banner-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+
+  .banner-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+
+    @media (min-width: 768px) {
+      font-size: 3.25rem;
+    }
+  }
+
+  .banner-subtitle {
+    font-size: 1.1rem;
+    color: #CBD5E1;
+    line-height: 1.65;
+  }
+}
+
+.sector-tabs-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 3.5rem;
+
+  .sector-tab-btn {
+    background: #FFFFFF;
+    border: 1px solid var(--color-surface-border);
+    padding: 0.55rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text-body);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-primary-600);
+      color: var(--color-primary-600);
+    }
+
+    &.active {
+      background: var(--color-primary-600);
+      border-color: var(--color-primary-600);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(0, 82, 204, 0.28);
+    }
+  }
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.client-corporate-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-surface-border);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: #BAE0FD;
+  }
+
+  .card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .client-logo-badge {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  }
+
+  .client-head-info {
+    flex: 1;
+
+    .sector-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-primary-600);
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .client-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .client-location {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+    }
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .project-type-box {
+    background: var(--color-surface-soft);
+    border: 1px solid #E2E8F0;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+
+    .pt-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .pt-val {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-primary-800);
+      margin-bottom: 0;
+    }
+  }
+
+  .testimonial-box {
+    margin-top: auto;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 1rem;
+
+    .stars {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .quote {
+      font-size: 0.88rem;
+      color: var(--color-text-body);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .author-meta {
+      strong {
+        display: block;
+        color: var(--color-text-main);
+        font-size: 0.85rem;
+      }
+      span {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+      }
+    }
+  }
+}

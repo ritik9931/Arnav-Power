@@ -1,0 +1,146 @@
+<div class="solar-calc-card">
+  <!-- Left/Top Inputs Form -->
+  <div class="calc-inputs-pane">
+    <div class="calc-badge">
+      <span>⚡ Instant Solar ROI &amp; Capacity Estimator</span>
+    </div>
+    <h3 class="calc-heading">Calculate Your Solar Savings &amp; System Size</h3>
+    <p class="calc-sub">Accurate estimates tailored to Central India solar insolation (5.2 kWh/m²/day) and local DISCOM tariffs.</p>
+
+    <!-- 1. Customer Segment Selector -->
+    <div class="input-segment">
+      <label class="segment-label">Select Customer Sector:</label>
+      <div class="segment-buttons">
+        <button type="button" class="seg-btn" [class.active]="customerType() === 'residential'" (click)="setCustomerType('residential')">
+          🏠 Residential / Home
+        </button>
+        <button type="button" class="seg-btn" [class.active]="customerType() === 'commercial'" (click)="setCustomerType('commercial')">
+          🏢 Commercial Office
+        </button>
+        <button type="button" class="seg-btn" [class.active]="customerType() === 'industrial'" (click)="setCustomerType('industrial')">
+          🏭 Industrial / Factory
+        </button>
+      </div>
+    </div>
+
+    <!-- 2. Calculation Mode (Bill vs Area) -->
+    <div class="input-segment">
+      <div class="mode-switch-row">
+        <label class="segment-label">Estimate By:</label>
+        <div class="mode-pills">
+          <button type="button" class="mode-pill" [class.active]="inputType() === 'bill'" (click)="setInputType('bill')">
+            Monthly Bill (₹)
+          </button>
+          <button type="button" class="mode-pill" [class.active]="inputType() === 'area'" (click)="setInputType('area')">
+            Rooftop Area (Sq Ft)
+          </button>
+        </div>
+      </div>
+
+      <!-- Slider & Numeric Input -->
+      <div class="slider-control-box">
+        <div class="slider-val-row">
+          <span class="val-label">{{ inputType() === 'bill' ? 'Average Monthly Electricity Bill' : 'Available Unshaded Rooftop Area' }}</span>
+          <span class="val-display font-mono-num">
+            {{ inputType() === 'bill' ? '₹' + inputValue().toLocaleString() : inputValue().toLocaleString() + ' Sq Ft' }}
+          </span>
+        </div>
+
+        <input type="range" 
+               [min]="minRange()" 
+               [max]="maxRange()" 
+               [step]="stepRange()" 
+               [ngModel]="inputValue()" 
+               (ngModelChange)="inputValue.set($event)"
+               class="calc-slider" />
+        
+        <div class="slider-ticks">
+          <span>{{ inputType() === 'bill' ? '₹' + minRange().toLocaleString() : minRange() + ' sq ft' }}</span>
+          <span>{{ inputType() === 'bill' ? '₹' + maxRange().toLocaleString() : maxRange().toLocaleString() + ' sq ft' }}</span>
+        </div>
+      </div>
+    </div>
+
+    @if (customerType() === 'residential') {
+      <div class="subsidy-alert">
+        <span class="subsidy-icon">🎁</span>
+        <div class="subsidy-text">
+          <strong>PM Surya Ghar Muft Bijli Yojana Eligible!</strong>
+          <p>Get up to ₹78,000 direct bank subsidy on systems 3kW and above.</p>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Right/Bottom Output Summary Dashboard -->
+  <div class="calc-results-pane">
+    <div class="results-header">
+      <span class="res-tag">System Sizing Recommendation</span>
+      <div class="res-capacity">
+        <span class="num font-mono-num">{{ estimate().systemKw }}</span>
+        <span class="unit">kWp System</span>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <div class="res-stat-card">
+        <span class="res-stat-icon">💰</span>
+        <div class="res-stat-info">
+          <span class="stat-num font-mono-num">₹{{ estimate().annualSavings.toLocaleString() }}</span>
+          <span class="stat-lbl">Annual Savings</span>
+        </div>
+      </div>
+
+      <div class="res-stat-card">
+        <span class="res-stat-icon">⚡</span>
+        <div class="res-stat-info">
+          <span class="stat-num font-mono-num">{{ estimate().annualUnits.toLocaleString() }}</span>
+          <span class="stat-lbl">Annual Units (kWh)</span>
+        </div>
+      </div>
+
+      <div class="res-stat-card">
+        <span class="res-stat-icon">🌱</span>
+        <div class="res-stat-info">
+          <span class="stat-num font-mono-num">{{ estimate().co2Offset }} Tons</span>
+          <span class="stat-lbl">CO₂ Saved / Year</span>
+        </div>
+      </div>
+
+      <div class="res-stat-card">
+        <span class="res-stat-icon">⏱️</span>
+        <div class="res-stat-info">
+          <span class="stat-num font-mono-num">{{ estimate().paybackYears }} Years</span>
+          <span class="stat-lbl">Estimated Payback</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Breakdown -->
+    <div class="financial-breakdown">
+      <div class="breakdown-row">
+        <span>Estimated System Cost:</span>
+        <strong class="font-mono-num">₹{{ estimate().estimatedCost.toLocaleString() }}</strong>
+      </div>
+      @if (estimate().subsidy > 0) {
+        <div class="breakdown-row text-green">
+          <span>Govt. Subsidy (PM Surya Ghar):</span>
+          <strong class="font-mono-num">- ₹{{ estimate().subsidy.toLocaleString() }}</strong>
+        </div>
+      }
+      <div class="breakdown-row total-row">
+        <span>Effective Net Investment:</span>
+        <strong class="font-mono-num text-solar">₹{{ estimate().netCost.toLocaleString() }}</strong>
+      </div>
+    </div>
+
+    <!-- Action Button -->
+    <div class="calc-action">
+      <a routerLink="/contact" class="btn btn-solar btn-lg full-width">
+        <span>Book Free 3D Site Survey</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <span class="consult-note">Includes complete shade simulation, structure design, and subsidy paperwork in Nagpur &amp; Vidarbha.</span>
+    </div>
+  </div>
+</div>

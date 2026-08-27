@@ -1,0 +1,555 @@
+<!-- =========================================================================
+     1. HERO SECTION (2-COLUMN VISUAL COMPOSITION & VERTICAL STACK ON MOBILE)
+     ========================================================================= -->
+<section class="hero-section">
+  <div class="hero-backdrop-pattern"></div>
+
+  <div class="container hero-container">
+    <div class="hero-split-grid">
+      <!-- LEFT COLUMN: Content, Headline, Description, CTAs -->
+      <div class="hero-text-col">
+        <!-- 1. Company Badge -->
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>ARNAV POWER SOLUTION &amp; SERVICES</span>
+        </div>
+
+        <!-- 2. Main Heading with clamp() -->
+        <h1 class="hero-title">
+          Engineering Intelligence.<br />
+          <span class="text-gradient-gis">Mapping Precision.</span><br />
+          <span class="text-gradient-solar">Sustainable Power.</span>
+        </h1>
+
+        <!-- 3. Description -->
+        <p class="hero-description">
+          Arnav Power Solution &amp; Services delivers professional GIS, land survey, property survey, utility survey, household survey, and turnkey solar power installation solutions using modern technology, accurate data, and intelligent field operations.
+        </p>
+
+        <!-- 4. CTA Buttons (Side-by-side on desktop, stacked on mobile) -->
+        <div class="hero-actions">
+          <a routerLink="/gis-survey" class="btn btn-gis btn-lg">
+            <span>Explore GIS Solutions</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a routerLink="/solar-projects" class="btn btn-solar btn-lg">
+            <span>View Our Projects</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Telemetry Summary -->
+        <div class="hero-telemetry-bar">
+          <div class="telemetry-item">
+            <span class="t-label">HQ Coordinates:</span>
+            <span class="t-val font-mono-num">21.1691°N, 79.0427°E</span>
+          </div>
+          <div class="telemetry-sep"></div>
+          <div class="telemetry-item">
+            <span class="t-label">Solar Yield:</span>
+            <span class="t-val font-mono-num">5.4 kWh/m²/day</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Dominant Layered Visual Composition -->
+      <div class="hero-visual-col">
+        <div class="hero-visual-frame">
+          <!-- Main Hero Composite Image -->
+          <img src="assets/images/hero/home-hero.jpg" alt="GIS and Solar Technology Composition" class="hero-composite-img" />
+          <div class="hero-img-overlay"></div>
+
+          <!-- Secondary Inset Image: Drone GIS Land Survey -->
+          <div class="hero-inset-card card-gis-inset glass-card animate-float">
+            <img src="assets/images/gis/drone-survey.jpg" alt="Drone Land Surveying" class="inset-img" />
+            <div class="inset-info">
+              <span class="inset-tag">🛰️ GIS &amp; UAV Survey</span>
+              <strong>Sub-centimeter RTK Fix</strong>
+              <span class="font-mono-num font-coord">SOI Benchmark Tied</span>
+            </div>
+          </div>
+
+          <!-- Tertiary Inset Card: Solar Telemetry -->
+          <div class="hero-inset-card card-solar-inset glass-card">
+            <div class="solar-icon-badge">☀️</div>
+            <div class="inset-info">
+              <span class="inset-tag">⚡ Solar Infrastructure</span>
+              <strong>15+ MW Commissioned</strong>
+              <span class="font-mono-num font-savings">85-90% Bill Reduction</span>
+            </div>
+          </div>
+
+          <!-- Floating Geospatial Marker Tag -->
+          <div class="floating-geo-marker font-mono-num">
+            <span class="geo-pulse"></span>
+            <span>Seminary Hills, Nagpur Lab</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     2. HERO VISUAL SPLIT SECTION (GIS vs SOLAR)
+     ========================================================================= -->
+<section class="split-section">
+  <div class="split-container">
+    <!-- Left Split: GIS & Survey Solutions -->
+    <div class="split-panel panel-gis">
+      <div class="split-bg" style="background-image: url('assets/images/hero/gis-survey-hero.jpg');"></div>
+      <div class="split-overlay"></div>
+      <div class="split-content">
+        <div class="split-badge badge-gis-theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+          <span>Geospatial Intelligence</span>
+        </div>
+        <h2 class="split-title">GIS &amp; SURVEY SOLUTIONS</h2>
+        <p class="split-desc">
+          High-precision geodetic spatial mapping, drone LiDAR topography, subsurface utility engineering (GPR), and digital field data surveys.
+        </p>
+        
+        <ul class="split-service-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> GIS Survey &amp; Spatial Database</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Landbase &amp; Topographic Survey</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Property &amp; Cadastral Demarcation</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Utility &amp; Pipeline Network Survey</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Household &amp; Consumer Indexing</li>
+        </ul>
+
+        <div class="split-action">
+          <a routerLink="/gis-survey" class="btn btn-gis btn-lg">
+            <span>Explore GIS Solutions</span>
+            <svg class="split-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Split: Solar Power Solutions -->
+    <div class="split-panel panel-solar">
+      <div class="split-bg" style="background-image: url('assets/images/hero/solar-energy-hero.jpg');"></div>
+      <div class="split-overlay"></div>
+      <div class="split-content">
+        <div class="split-badge badge-solar-theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/></svg>
+          <span>Renewable Infrastructure</span>
+        </div>
+        <h2 class="split-title">SOLAR POWER SOLUTIONS</h2>
+        <p class="split-desc">
+          Turnkey engineering, procurement, and construction (EPC) for industrial, commercial, and residential rooftop and ground-mounted solar power plants.
+        </p>
+
+        <ul class="split-service-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Solar Site &amp; 3D Shadow Survey</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Rooftop Solar Installations</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Commercial &amp; Institutional Solar</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Industrial MW-Scale Captive Solar</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 24/7 Cloud SCADA &amp; Monitoring</li>
+        </ul>
+
+        <div class="split-action">
+          <a routerLink="/solar-solutions" class="btn btn-solar btn-lg">
+            <span>Explore Solar Solutions</span>
+            <svg class="split-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     3. ABOUT COMPANY SECTION WITH ANIMATED STATS
+     ========================================================================= -->
+<section class="section-py bg-soft">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left: Visual & Engineering Image -->
+      <div class="about-visual">
+        <div class="about-img-frame">
+          <img src="assets/images/hero/about-team.jpg" alt="Arnav Power Field Survey & Engineering Team" class="main-about-img" />
+          
+          <div class="floating-badge-box glass-card animate-float">
+            <div class="f-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="f-info">
+              <strong>ISO 9001:2015 Certified</strong>
+              <span>MNRE &amp; DISCOM Approved Partner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Content & Mission -->
+      <div class="about-text-pane">
+        <span class="badge-tag badge-primary">
+          <span class="badge-dot"></span>
+          About Arnav Power Solution &amp; Services
+        </span>
+        <h2 class="about-heading">
+          Powering Progress Through Technology &amp; Sustainable Energy
+        </h2>
+        <p class="about-p">
+          Headquartered in Seminary Hills, Nagpur, <strong>Arnav Power Solution &amp; Services</strong> is an engineering powerhouse operating at the intersection of advanced geospatial technologies and renewable energy infrastructure.
+        </p>
+        <p class="about-p">
+          We combine cutting-edge satellite remote sensing, RTK GNSS field surveys, UAV photogrammetry, and door-to-door consumer indexing with turnkey engineering, procurement, and commissioning (EPC) of high-yield solar energy power plants.
+        </p>
+
+        <!-- Value Badges -->
+        <div class="values-checklist">
+          <div class="value-item">
+            <div class="val-icon">✓</div>
+            <div>
+              <strong>Millimeter Geodetic Accuracy</strong>
+              <p>State-of-the-art DGPS, Total Stations, and Ground Penetrating Radar.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="val-icon">✓</div>
+            <div>
+              <strong>Turnkey Solar EPC &amp; Net Metering</strong>
+              <p>Complete CEIG statutory clearances, structure fabrication, and DISCOM synchronization.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-cta-row">
+          <a routerLink="/about" class="btn btn-primary">
+            <span>Read Our Full Story</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated Statistics Cards Grid -->
+    <div class="stats-section-grid">
+      @for (stat of stats; track stat.id) {
+        <app-stats-counter
+          [targetValue]="stat.value"
+          [suffix]="stat.suffix"
+          [label]="stat.label"
+          [sublabel]="stat.sublabel"
+          [icon]="stat.icon"
+          [domain]="stat.domain">
+        </app-stats-counter>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     4. GIS TECHNOLOGY RADAR SECTION
+     ========================================================================= -->
+<section class="section-py bg-dark-navy gis-grid-dark">
+  <div class="container">
+    <app-section-header
+      badge="Geospatial Infrastructure"
+      badgeType="dark"
+      theme="dark"
+      title="Powered by Modern Geospatial Technology"
+      subtitle="From sub-centimeter RTK satellite positioning to underground GPR and cloud spatial modeling, our tech stack powers intelligent infrastructure decisions.">
+    </app-section-header>
+
+    <div class="tech-cards-grid">
+      @for (tech of gisTechnologies; track tech.id) {
+        <div class="glass-dark-card tech-card">
+          <div class="tech-icon-wrap">
+            @switch (tech.id) {
+              @case ('gnss') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+              }
+              @case ('drone') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              }
+              @case ('gis-platform') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              }
+              @case ('satellite-remote') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              }
+              @case ('mobile-gis') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+              }
+              @default {
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              }
+            }
+          </div>
+
+          <span class="tech-accuracy-badge font-mono-num">{{ tech.accuracy }}</span>
+          <h3 class="tech-title">{{ tech.title }}</h3>
+          <p class="tech-tag">{{ tech.tag }}</p>
+          <p class="tech-desc">{{ tech.description }}</p>
+
+          <div class="tech-specs">
+            @for (spec of tech.keySpecs; track spec) {
+              <span class="spec-chip">✓ {{ spec }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     5A. SOLAR POWER INSTALLATIONS CAROUSEL
+     ========================================================================= -->
+<section class="section-py bg-soft featured-projects-section">
+  <div class="container">
+    <div class="featured-top-row">
+      <div class="featured-header-col">
+        <app-section-header
+          badge="Renewable Energy Portfolio"
+          badgeType="solar"
+          align="left"
+          title="Featured Solar Power Installations"
+          subtitle="Explore our milestone turnkey EPC, commercial rooftops, and industrial solar power plants across Maharashtra.">
+        </app-section-header>
+      </div>
+
+      <!-- Carousel Nav Buttons -->
+      <div class="featured-controls-col">
+        <div class="carousel-nav-arrows">
+          <button class="carousel-arrow-btn arrow-solar" (click)="scrollSolarCarousel(-1)" aria-label="Previous Solar Projects">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="carousel-arrow-btn arrow-solar" (click)="scrollSolarCarousel(1)" aria-label="Next Solar Projects">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contained Solar Carousel Track -->
+    <div class="carousel-wrapper">
+      <div class="projects-carousel-track" #solarCarousel>
+        @for (project of solarFeaturedProjects; track project.id) {
+          <div class="carousel-card-slide">
+            <app-project-card [unifiedProject]="project"></app-project-card>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="view-all-projects-row">
+      <a routerLink="/solar-projects" class="btn btn-solar btn-lg">
+        <span>View Full Solar Installations Directory (Interactive Map &amp; Filters)</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     5B. GIS & SURVEY SOLUTIONS CAROUSEL (BELOW SOLAR CAROUSEL)
+     ========================================================================= -->
+<section class="section-py featured-projects-section gis-carousel-section">
+  <div class="container">
+    <div class="featured-top-row">
+      <div class="featured-header-col">
+        <app-section-header
+          badge="Geospatial Intelligence Portfolio"
+          badgeType="gis"
+          align="left"
+          title="Featured GIS, Landbase &amp; Utility Survey Projects"
+          subtitle="High-density drone photogrammetry, cadastral boundary demarcation, subterranean utility radar scans, and door-to-door consumer indexing.">
+        </app-section-header>
+      </div>
+
+      <!-- Carousel Nav Buttons -->
+      <div class="featured-controls-col">
+        <div class="carousel-nav-arrows">
+          <button class="carousel-arrow-btn arrow-gis" (click)="scrollGisCarousel(-1)" aria-label="Previous GIS Projects">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="carousel-arrow-btn arrow-gis" (click)="scrollGisCarousel(1)" aria-label="Next GIS Projects">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contained GIS Carousel Track -->
+    <div class="carousel-wrapper">
+      <div class="projects-carousel-track" #gisCarousel>
+        @for (project of gisFeaturedProjects; track project.id) {
+          <div class="carousel-card-slide">
+            <app-project-card [unifiedProject]="project"></app-project-card>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="view-all-projects-row">
+      <a routerLink="/gis-survey" class="btn btn-gis btn-lg">
+        <span>Explore Full GIS &amp; Survey Services &amp; Deliverables</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     6. INTERACTIVE SOLAR CALCULATOR
+     ========================================================================= -->
+<section class="section-py" style="background-color: #F8FAFD;">
+  <div class="container">
+    <app-solar-calculator></app-solar-calculator>
+  </div>
+</section>
+
+<!-- =========================================================================
+     7. PROCESS / HOW WE WORK INTERACTIVE WORKFLOW
+     ========================================================================= -->
+<section class="section-py bg-soft">
+  <div class="container">
+    <app-section-header
+      badge="Standard Operating Procedure"
+      badgeType="primary"
+      title="How We Execute: Structured Project Methodology"
+      subtitle="Strict quality assurance, transparent statutory liaisoning, and precision engineering at every stage.">
+    </app-section-header>
+
+    <!-- Domain Switcher -->
+    <div class="process-domain-switch">
+      <button class="p-switch-btn" [class.active]="activeProcessDomain() === 'gis'" (click)="setProcessDomain('gis')">
+        🛰️ GIS &amp; Survey 6-Step Workflow
+      </button>
+      <button class="p-switch-btn btn-solar-switch" [class.active]="activeProcessDomain() === 'solar'" (click)="setProcessDomain('solar')">
+        ☀️ Solar Turnkey EPC 6-Step Workflow
+      </button>
+    </div>
+
+    <!-- Process Steps Timeline -->
+    <div class="process-timeline-grid">
+      @if (activeProcessDomain() === 'gis') {
+        @for (step of gisProcessSteps; track step.step) {
+          <div class="process-step-card is-gis">
+            <div class="step-num-badge font-mono-num">{{ step.phase }}</div>
+            <h4 class="step-title">{{ step.title }}</h4>
+            <p class="step-desc">{{ step.description }}</p>
+          </div>
+        }
+      } @else {
+        @for (step of solarProcessSteps; track step.step) {
+          <div class="process-step-card is-solar">
+            <div class="step-num-badge font-mono-num">{{ step.phase }}</div>
+            <h4 class="step-title">{{ step.title }}</h4>
+            <p class="step-desc">{{ step.description }}</p>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     8. WHY CHOOSE US
+     ========================================================================= -->
+<section class="section-py">
+  <div class="container">
+    <app-section-header
+      badge="The Arnav Advantage"
+      badgeType="primary"
+      title="Why Choose Arnav Power Solution &amp; Services"
+      subtitle="Combining certified engineering rigor with high-speed field operations and 25-year lifecycle commitment.">
+    </app-section-header>
+
+    <div class="why-us-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h4>Accurate Data</h4>
+        <p>Sub-centimeter precision-driven RTK survey, Total Station geodetic baselines, and certified CAD deliverables.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">🛰️</div>
+        <h4>Modern Technology</h4>
+        <p>Advanced enterprise GIS, dual-frequency GNSS, drone UAV LiDAR, GPR subsurface radars, and IoT SCADA.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">👷</div>
+        <h4>Experienced Team</h4>
+        <p>Seasoned geospatial cartographers, structural engineers, and certified CEIG solar electrical supervisors.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">☀️</div>
+        <h4>Sustainable Solutions</h4>
+        <p>High-efficiency Tier-1 bifacial solar infrastructure reducing carbon footprints and cutting industrial energy tariffs.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <h4>Reliable Execution</h4>
+        <p>Fast-track commissioning, DISCOM net-metering approvals, zero-incident safety record, and guaranteed SLAs.</p>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h4>Client Focused</h4>
+        <p>Custom-engineered solutions aligned directly with municipal, industrial, or residential project requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     9. INTERACTIVE PROJECT & HEADQUARTERS MAP
+     ========================================================================= -->
+<section class="section-py bg-soft">
+  <div class="container">
+    <app-section-header
+      badge="Geographical Distribution"
+      badgeType="gis"
+      title="Installation Locations &amp; Corporate Office"
+      subtitle="Explore our active project sites across Maharashtra and Central India, or visit our headquarters in Seminary Hills, Nagpur.">
+    </app-section-header>
+
+    <app-leaflet-map [showSidebar]="true" filterDomain="all"></app-leaflet-map>
+  </div>
+</section>
+
+<!-- =========================================================================
+     10. CLIENT TRUST & TESTIMONIALS
+     ========================================================================= -->
+<section class="section-py">
+  <div class="container">
+    <app-section-header
+      badge="Client Endorsements"
+      badgeType="primary"
+      title="Trusted by Organizations Across Key Industries"
+      subtitle="We are proud to serve state electricity distribution companies, industrial zones, and leading private corporations.">
+    </app-section-header>
+
+    <div class="client-grid">
+      @for (client of clients; track client.id) {
+        <div class="client-testimonial-card">
+          <div class="client-card-top">
+            <div class="client-logo-avatar" [style.background-color]="client.logoBg">
+              {{ client.initials }}
+            </div>
+            <div>
+              <h4 class="client-org-name">{{ client.name }}</h4>
+              <span class="client-sector-tag">{{ client.sector }}</span>
+            </div>
+          </div>
+          
+          <div class="client-rating">⭐⭐⭐⭐⭐</div>
+          <p class="client-quote">"{{ client.testimonial }}"</p>
+          
+          <div class="client-author">
+            <strong>{{ client.spokesperson }}</strong>
+            <span>{{ client.designation }} • {{ client.location }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

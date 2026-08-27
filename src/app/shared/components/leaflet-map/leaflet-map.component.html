@@ -1,0 +1,66 @@
+<div class="interactive-map-wrapper">
+  <!-- Map Header Bar with Filters -->
+  <div class="map-controls-bar">
+    <div class="map-title-info">
+      <div class="live-dot"></div>
+      <h4>Interactive Geospatial &amp; Solar Installation Map</h4>
+    </div>
+
+    <div class="map-filter-pills">
+      <button class="filter-btn" [class.active]="activeFilter() === 'all'" (click)="setFilter('all')">
+        All Sites ({{ allMarkers.length }})
+      </button>
+      <button class="filter-btn btn-solar-filter" [class.active]="activeFilter() === 'solar'" (click)="setFilter('solar')">
+        ☀️ Solar Plants
+      </button>
+      <button class="filter-btn btn-gis-filter" [class.active]="activeFilter() === 'gis'" (click)="setFilter('gis')">
+        🛰️ GIS Surveys
+      </button>
+      <button class="filter-btn btn-reset" (click)="resetView()" title="Reset to Central India HQ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        <span>Nagpur HQ</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Map Layout (Canvas + Sidebar) -->
+  <div class="map-main-layout" [class.has-sidebar]="showSidebar">
+    <!-- Leaflet Render Container -->
+    <div #mapContainer class="leaflet-render-canvas"></div>
+
+    <!-- Quick Location Selection Sidebar -->
+    @if (showSidebar) {
+      <div class="map-locations-sidebar">
+        <div class="sidebar-header">
+          <h5>Project Locations ({{ filteredMarkers().length }})</h5>
+          <span class="subtext">Click to fly to site coordinates</span>
+        </div>
+
+        <div class="sidebar-list">
+          @for (item of filteredMarkers(); track item.id) {
+            <div class="location-item-card" 
+                 [class.active]="selectedItem()?.id === item.id"
+                 [class.is-hq]="item.isHq"
+                 [class.is-solar]="item.domain === 'solar'"
+                 [class.is-gis]="item.domain === 'gis'"
+                 (click)="focusMarker(item)">
+              <div class="item-icon-tag">
+                @if (item.isHq) { 🏢 }
+                @else if (item.domain === 'solar') { ☀️ }
+                @else { 🛰️ }
+              </div>
+              <div class="item-info">
+                <span class="item-category">{{ item.category }}</span>
+                <h6 class="item-name">{{ item.title }}</h6>
+                <p class="item-loc">📍 {{ item.location }}</p>
+                <div class="item-metric">
+                  {{ item.capacityOrScale }}
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

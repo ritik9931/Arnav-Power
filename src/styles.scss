@@ -1,0 +1,534 @@
+/* ==========================================================================
+   ARNAV POWER SOLUTION & SERVICES - ENTERPRISE DESIGN SYSTEM
+   Theme: Precision GIS & Clean Solar Energy Infrastructure
+   ========================================================================== */
+
+:root {
+  /* Primary & Corporate Blues */
+  --color-primary-900: #051426;
+  --color-primary-800: #0A2540;
+  --color-primary-700: #0F3866;
+  --color-primary-600: #0052CC;
+  --color-primary-500: #0066FF;
+  
+  /* Bright Sky Blue & Cyan Accents */
+  --color-sky-500: #00A3FF;
+  --color-sky-400: #38BDF8;
+  --color-cyan-400: #00D2FF;
+  --color-cyan-300: #67E8F9;
+  
+  /* Solar Energy Warm Accents */
+  --color-solar-amber: #FFB020;
+  --color-solar-orange: #FF7A00;
+  --color-solar-dark: #D97706;
+  --color-solar-glow: rgba(255, 176, 32, 0.25);
+  
+  /* Neutral & Surfaces */
+  --color-bg: #FFFFFF;
+  --color-surface-soft: #F8FAFD;
+  --color-surface-card: #FFFFFF;
+  --color-surface-hover: #F0F6FF;
+  --color-surface-border: #E2E8F0;
+  --color-surface-border-focus: #00A3FF;
+  
+  /* Text & Ink */
+  --color-text-main: #0D1E3A;
+  --color-text-body: #334155;
+  --color-text-muted: #64748B;
+  --color-text-light: #94A3B8;
+  --color-text-white: #FFFFFF;
+  
+  /* Glassmorphism & Overlays */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 20px 40px -15px rgba(10, 37, 64, 0.08);
+  --glass-dark-bg: rgba(10, 37, 64, 0.88);
+  --glass-dark-border: rgba(0, 210, 255, 0.15);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(10, 37, 64, 0.04);
+  --shadow-md: 0 6px 16px -2px rgba(10, 37, 64, 0.08);
+  --shadow-lg: 0 16px 32px -4px rgba(10, 37, 64, 0.10);
+  --shadow-xl: 0 24px 48px -8px rgba(10, 37, 64, 0.14);
+  --shadow-blue-glow: 0 8px 30px rgba(0, 163, 255, 0.28);
+  --shadow-solar-glow: 0 8px 30px rgba(255, 122, 0, 0.25);
+  
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+  
+  /* Layout */
+  --container-max: 1320px;
+  --navbar-height: 84px;
+}
+
+/* CSS RESET & BASE STYLES */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-body);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-main);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--color-primary-600);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+a:hover {
+  color: var(--color-sky-500);
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* CONTAINER & LAYOUT */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.section-py {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+
+@media (max-width: 768px) {
+  .section-py {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+.bg-soft {
+  background-color: var(--color-surface-soft);
+}
+
+.bg-dark-navy {
+  background-color: var(--color-primary-800);
+  color: var(--color-text-white);
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.6rem;
+  min-height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  white-space: normal;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-800) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 82, 204, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-sky-500) 0%, var(--color-primary-600) 100%);
+  box-shadow: 0 8px 25px rgba(0, 163, 255, 0.4);
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: var(--color-primary-800);
+  border-color: #D6E4FF;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-sky-500);
+  color: var(--color-primary-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-solar {
+  background: linear-gradient(135deg, var(--color-solar-amber) 0%, var(--color-solar-orange) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(255, 122, 0, 0.3);
+}
+
+.btn-solar:hover {
+  background: linear-gradient(135deg, #FFC107 0%, var(--color-solar-dark) 100%);
+  box-shadow: var(--shadow-solar-glow);
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.btn-gis {
+  background: linear-gradient(135deg, #0052CC 0%, #00B4D8 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.3);
+}
+
+.btn-gis:hover {
+  background: linear-gradient(135deg, #0077B6 0%, #00D2FF 100%);
+  box-shadow: 0 8px 25px rgba(0, 210, 255, 0.4);
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.btn-white {
+  background-color: #FFFFFF;
+  color: var(--color-primary-800);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-white:hover {
+  background-color: #F8FAFC;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.btn-lg {
+  padding: 1.05rem 2.25rem;
+  font-size: 1.05rem;
+}
+
+.btn-sm {
+  padding: 0.55rem 1.15rem;
+  font-size: 0.85rem;
+}
+
+/* BADGES & PILLS */
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.badge-gis {
+  background-color: #E6F4FE;
+  color: #0066CC;
+  border: 1px solid #BAE0FD;
+}
+
+.badge-solar {
+  background-color: #FEF3E6;
+  color: #D97706;
+  border: 1px solid #FCD9BD;
+}
+
+.badge-primary {
+  background-color: rgba(0, 82, 204, 0.08);
+  color: var(--color-primary-600);
+  border: 1px solid rgba(0, 82, 204, 0.2);
+}
+
+.badge-dark {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-cyan-400);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+/* CARDS & GLASSMORPHISM */
+.card-premium {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-surface-border);
+  box-shadow: var(--shadow-md);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: #BAE0FD;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-dark-card {
+  background: var(--glass-dark-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--radius-xl);
+  color: #FFFFFF;
+}
+
+/* GRID PATTERNS & ANIMATED BACKGROUNDS */
+.gis-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 163, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 163, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.gis-grid-dark {
+  background-image: 
+    linear-gradient(to right, rgba(0, 210, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 210, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* KEYFRAME ANIMATIONS */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* FORM ELEMENTS */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--color-text-main);
+  margin-bottom: 0.45rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-surface-border);
+  background-color: #FFFFFF;
+  color: var(--color-text-main);
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--color-sky-500);
+  box-shadow: 0 0 0 4px rgba(0, 163, 255, 0.12);
+}
+
+.form-control.is-invalid {
+  border-color: #EF4444;
+  background-color: #FEF2F2;
+}
+
+.invalid-feedback {
+  display: block;
+  font-size: 0.8rem;
+  color: #EF4444;
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+/* LEAFLET CUSTOM POPUPS & MARKERS */
+.leaflet-popup-content-wrapper {
+  border-radius: 16px !important;
+  box-shadow: 0 15px 35px rgba(10, 37, 64, 0.18) !important;
+  padding: 4px !important;
+  overflow: hidden;
+  border: 1px solid rgba(0, 163, 255, 0.2);
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+  line-height: 1.4 !important;
+}
+
+.custom-map-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  border: 2.5px solid #FFFFFF;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+.custom-map-pin:hover {
+  transform: scale(1.2);
+}
+
+.pin-hq {
+  background: linear-gradient(135deg, #0052CC, #0A2540);
+  color: #FFFFFF;
+}
+
+.pin-solar {
+  background: linear-gradient(135deg, #FFB020, #FF7A00);
+  color: #FFFFFF;
+}
+
+.pin-gis {
+  background: linear-gradient(135deg, #00C2FF, #0052CC);
+  color: #FFFFFF;
+}
+
+/* UTILITY HELPERS */
+.text-gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary-800) 0%, var(--color-primary-600) 60%, var(--color-sky-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-solar {
+  background: linear-gradient(135deg, #FFB020 0%, #FF7A00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gis {
+  background: linear-gradient(135deg, #0066FF 0%, #00D2FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  letter-spacing: -0.03em;
+}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}

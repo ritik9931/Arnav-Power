@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="logoPrimaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0052CC"/>
+      <stop offset="100%" stop-color="#0A2540"/>
+    </linearGradient>
+    <linearGradient id="logoCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF"/>
+      <stop offset="100%" stop-color="#0080FF"/>
+    </linearGradient>
+    <linearGradient id="logoSolarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFB020"/>
+      <stop offset="50%" stop-color="#FF7A00"/>
+      <stop offset="100%" stop-color="#E65100"/>
+    </linearGradient>
+    <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- ICON BADGE -->
+  <g transform="translate(10, 10)">
+    <!-- Outer Shield / Hexagonal Precision Base -->
+    <path d="M 50,2 L 88,24 L 88,68 L 50,94 L 12,68 L 12,24 Z" 
+          fill="url(#logoPrimaryGrad)" 
+          stroke="#00C2FF" 
+          stroke-width="2.5" 
+          stroke-linejoin="round" />
+    
+    <!-- Geospatial Coordinate Compass Grid Lines (GIS) -->
+    <circle cx="50" cy="48" r="32" fill="none" stroke="#00C2FF" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.6"/>
+    <line x1="50" y1="14" x2="50" y2="82" stroke="#00D2FF" stroke-width="1.2" opacity="0.4"/>
+    <line x1="16" y1="48" x2="84" y2="48" stroke="#00D2FF" stroke-width="1.2" opacity="0.4"/>
+    
+    <!-- Solar Photovoltaic Grid Polygon (Solar Power) -->
+    <path d="M 32,32 L 68,26 L 76,58 L 24,58 Z" fill="url(#logoSolarGrad)" opacity="0.95" />
+    <!-- Grid Lines on Solar Panel -->
+    <line x1="50" y1="29" x2="50" y2="58" stroke="#FFF" stroke-width="1" opacity="0.8"/>
+    <line x1="28" y1="45" x2="72" y2="42" stroke="#FFF" stroke-width="1" opacity="0.8"/>
+
+    <!-- GIS Survey Center GPS Coordinate Pin -->
+    <path d="M 50,38 C 45,38 41,42 41,47 C 41,54 50,66 50,66 C 50,66 59,54 59,47 C 59,42 55,38 50,38 Z" 
+          fill="#00D2FF" 
+          filter="url(#logoGlow)"/>
+    <circle cx="50" cy="46" r="3" fill="#FFFFFF"/>
+
+    <!-- Dynamic Energy Arc / Orbit -->
+    <path d="M 18,28 Q 50,6 82,28 Q 94,56 78,78" fill="none" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="82" cy="28" r="2.5" fill="#FFB020"/>
+  </g>
+
+  <!-- TEXT TYPOGRAPHY -->
+  <g transform="translate(125, 0)">
+    <!-- Primary Brand Word -->
+    <text x="0" y="52" 
+          font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', sans-serif" 
+          font-size="34" 
+          font-weight="800" 
+          letter-spacing="2" 
+          fill="#0A2540">
+      ARNAV <tspan fill="#0070F3">POWER</tspan>
+    </text>
+
+    <!-- Subtitle Domain Classification -->
+    <text x="2" y="76" 
+          font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', sans-serif" 
+          font-size="14.5" 
+          font-weight="700" 
+          letter-spacing="4" 
+          fill="#0099FF">
+      SOLUTION &amp; SERVICES
+    </text>
+
+    <!-- Capability Tagline -->
+    <text x="2" y="96" 
+          font-family="'Inter', sans-serif" 
+          font-size="10.5" 
+          font-weight="600" 
+          letter-spacing="1.5" 
+          fill="#64748B">
+      GIS &amp; SURVEY SOLUTIONS  •  SOLAR POWER INFRASTRUCTURE
+    </text>
+  </g>
+</svg>

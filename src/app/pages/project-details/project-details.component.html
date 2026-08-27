@@ -1,0 +1,184 @@
+@if (project(); as p) {
+  <!-- Hero / Header Section -->
+  <section class="project-hero">
+    <div class="project-hero-bg" [style.background-image]="'url(' + p.heroImage + ')'">
+      <div class="project-hero-overlay"></div>
+    </div>
+
+    <div class="container project-hero-container">
+      <div class="breadcrumb-bar">
+        <a routerLink="/home">Home</a>
+        <span>/</span>
+        <a routerLink="/solar-projects">Solar Installations</a>
+        <span>/</span>
+        <span class="active-crumb">{{ p.title }}</span>
+      </div>
+
+      <div class="hero-tags">
+        <span class="badge-tag badge-solar">{{ p.category }} Solar Plant</span>
+        <span class="status-pill">● {{ p.status }}</span>
+      </div>
+
+      <h1 class="project-headline">{{ p.title }}</h1>
+      
+      <div class="client-location-strip">
+        <div class="strip-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span><strong>Client:</strong> {{ p.clientName }}</span>
+        </div>
+        <div class="strip-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>Location:</strong> {{ p.location }}</span>
+        </div>
+        <div class="strip-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span><strong>Commissioned:</strong> {{ p.completionDate }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Highlights Strip -->
+  <section class="tech-specs-strip">
+    <div class="container">
+      <div class="specs-grid">
+        <div class="spec-card">
+          <span class="spec-num font-mono-num">{{ p.capacityKw }} kWp</span>
+          <span class="spec-lbl">Installed Capacity</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-num font-mono-num">{{ p.panelsInstalled }}</span>
+          <span class="spec-lbl">Modules Installed</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-num font-mono-num">{{ p.annualGenerationKwh.toLocaleString() }} kWh</span>
+          <span class="spec-lbl">Annual Generation</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-num font-mono-num">{{ p.co2OffsetTons }} Tons</span>
+          <span class="spec-lbl">Annual CO₂ Offset</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-num font-mono-num">{{ p.paybackEstimatedYears }} Yrs</span>
+          <span class="spec-lbl">Estimated Payback</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Body (Overview, Detailed Specs, Gallery, Location) -->
+  <section class="section-py bg-soft">
+    <div class="container">
+      <div class="details-layout-grid">
+        <!-- Left: Narrative & Gallery -->
+        <div class="details-left">
+          <!-- Overview -->
+          <div class="content-box">
+            <h2 class="box-title">Project Overview &amp; Execution</h2>
+            <p class="overview-desc">{{ p.description }}</p>
+
+            <h3 class="sub-title">Engineering Scope of Work</h3>
+            <ul class="scope-list">
+              @for (item of p.detailedScope; track item) {
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>{{ item }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <!-- Project Gallery (Masonry & Lightbox) -->
+          <div class="content-box">
+            <div class="box-header-row">
+              <h2 class="box-title">Installation Photo Gallery</h2>
+              <span class="hint-text">Click image to enlarge</span>
+            </div>
+
+            <div class="gallery-masonry-grid">
+              @for (img of p.gallery; track img.url; let i = $index) {
+                <div class="gallery-photo-item" (click)="openLightbox(i)">
+                  <img [src]="img.url" [alt]="img.caption" loading="lazy" class="gallery-img" />
+                  <div class="gallery-img-overlay">
+                    <span class="phase-tag">{{ img.phase | uppercase }}</span>
+                    <p class="caption">{{ img.caption }}</p>
+                    <div class="expand-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Technical Specification Sidebar -->
+        <div class="details-right">
+          <!-- Hardware Card -->
+          <div class="sidebar-spec-card">
+            <h3 class="sidebar-spec-title">Hardware Specifications</h3>
+            
+            <div class="spec-entry">
+              <span class="lbl">Solar PV Modules:</span>
+              <strong class="val">{{ p.panelBrand }}</strong>
+            </div>
+
+            <div class="spec-entry">
+              <span class="lbl">Inverter Architecture:</span>
+              <strong class="val">{{ p.inverterSpecs }}</strong>
+            </div>
+
+            <div class="spec-entry">
+              <span class="lbl">Mounting Structure:</span>
+              <strong class="val">Hot-dip Galvanized / Non-Penetrative Aluminium Railing</strong>
+            </div>
+
+            <div class="spec-entry">
+              <span class="lbl">Lightning &amp; Earthing:</span>
+              <strong class="val">Class-I ESE Lightning Arrester + Dual Chemical Pits</strong>
+            </div>
+
+            <div class="spec-entry">
+              <span class="lbl">Statutory Compliance:</span>
+              <strong class="val">CEIG Clearance &amp; DISCOM Net Meter Synchronized</strong>
+            </div>
+          </div>
+
+          <!-- Geolocation Card -->
+          <div class="sidebar-spec-card">
+            <h3 class="sidebar-spec-title">Site Coordinates</h3>
+            <div class="coord-box">
+              <span class="font-mono-num font-coord">Lat: {{ p.coordinates.lat }}° N</span>
+              <span class="font-mono-num font-coord">Lng: {{ p.coordinates.lng }}° E</span>
+            </div>
+            <p class="coord-desc">Precision GPS geocoded site in {{ p.city }}, {{ p.state }}.</p>
+          </div>
+
+          <!-- Need a similar solar project CTA -->
+          <div class="sidebar-cta-card">
+            <h4>Need a Similar Solar Installation?</h4>
+            <p>Get a custom 3D shadow simulation and financial feasibility report for your factory or commercial facility.</p>
+            <a routerLink="/contact" class="btn btn-solar full-width">
+              <span>Request Site Feasibility</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <app-lightbox 
+    [images]="p.gallery" 
+    [currentIndex]="activeImageIndex()" 
+    [isOpen]="isLightboxOpen()" 
+    (close)="closeLightbox()">
+  </app-lightbox>
+} @else {
+  <div class="container section-py text-center">
+    <h2>Project Not Found</h2>
+    <p>The requested solar project could not be found.</p>
+    <a routerLink="/solar-projects" class="btn btn-primary">Back to Solar Projects Directory</a>
+  </div>
+}

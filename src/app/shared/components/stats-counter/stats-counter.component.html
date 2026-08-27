@@ -1,0 +1,29 @@
+<div class="stat-card" [class.domain-gis]="domain === 'gis'" [class.domain-solar]="domain === 'solar'">
+  <div class="stat-icon-wrap">
+    @switch (icon) {
+      @case ('sun') {
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      }
+      @case ('map-pin') {
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      }
+      @case ('award') {
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+      }
+      @default {
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      }
+    }
+  </div>
+
+  <div class="stat-number-wrap font-mono-num">
+    @if (prefix) { <span class="prefix">{{ prefix }}</span> }
+    <span class="value">{{ displayValue() }}</span>
+    @if (suffix) { <span class="suffix">{{ suffix }}</span> }
+  </div>
+
+  <h4 class="stat-label">{{ label }}</h4>
+  @if (sublabel) {
+    <p class="stat-sublabel">{{ sublabel }}</p>
+  }
+</div>

@@ -1,0 +1,65 @@
+<div class="project-card" [class.is-solar]="isSolar">
+  <!-- Image Container -->
+  <div class="project-media">
+    <img [src]="image" [alt]="title" loading="lazy" class="project-img" />
+    <div class="media-overlay"></div>
+    
+    <div class="top-tags">
+      <span class="category-badge" [class.badge-solar-theme]="isSolar" [class.badge-gis-theme]="!isSolar">
+        {{ category }}
+      </span>
+      <span class="status-badge" [class.status-commissioned]="status === 'Commissioned'" [class.status-progress]="status === 'In Progress'">
+        {{ status }}
+      </span>
+    </div>
+
+    <!-- Bottom Capacity Overlay -->
+    @if (capacityOrScale) {
+      <div class="capacity-overlay">
+        <span class="cap-lbl">Capacity / Scale</span>
+        <span class="cap-val">{{ capacityOrScale }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Content Box -->
+  <div class="project-content">
+    <div class="client-meta">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>{{ client }}</span>
+    </div>
+
+    <h3 class="project-title">{{ title }}</h3>
+
+    <div class="location-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>{{ location }}</span>
+    </div>
+
+    <!-- Solar Specific Metric Pills (if solar project) -->
+    @if (solarProject) {
+      <div class="solar-stats-grid">
+        <div class="solar-stat">
+          <span class="val">{{ solarProject.annualGenerationKwh.toLocaleString() }} kWh</span>
+          <span class="lbl">Annual Yield</span>
+        </div>
+        <div class="solar-stat">
+          <span class="val">{{ solarProject.co2OffsetTons }} Tons</span>
+          <span class="lbl">CO₂ Offset/Yr</span>
+        </div>
+        <div class="solar-stat">
+          <span class="val">{{ solarProject.paybackEstimatedYears }} Yrs</span>
+          <span class="lbl">Est. Payback</span>
+        </div>
+      </div>
+    }
+
+    <!-- Card Action Button -->
+    <div class="card-action">
+      <a [routerLink]="link" class="btn btn-secondary btn-sm full-width" [class.btn-solar-action]="isSolar">
+        <span>View Project Details</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
