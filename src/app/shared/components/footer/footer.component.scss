@@ -230,13 +230,33 @@
   gap: 1rem;
   font-size: 0.85rem;
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     flex-direction: row;
   }
 
   p {
     margin-bottom: 0;
     color: #64748B;
+  }
+}
+
+.footer-bottom-center {
+  .maintained-by {
+    color: #94A3B8;
+    font-size: 0.82rem;
+
+    .yo4gis-link {
+      color: var(--color-cyan-400);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+
+      &:hover {
+        color: #FFFFFF;
+        text-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
+        text-decoration: underline;
+      }
+    }
   }
 }
 
