@@ -1,8 +1,7 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, ViewChild, Input, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, ViewChild, Input, signal, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import * as L from 'leaflet';
-import 'leaflet.markercluster';
+import * as LeafletModule from 'leaflet';
 import { ProjectLocationService } from '../../../core/services/project-location.service';
 import { MapProject, MapCategoryFilter } from '../../../core/models/map-project.model';
 
@@ -20,18 +19,17 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() showSidebar: boolean = true;
   @Input() filterDomain: MapCategoryFilter = 'all';
 
-  private map: L.Map | null = null;
+  private map: any = null;
   private clusterGroup: any = null;
-  private markerMap = new Map<string, L.Marker>();
+  private markerMap = new Map<string, any>();
 
-  // Base tile layers (Google Maps in Leaflet)
-  private currentTileLayer: L.TileLayer | null = null;
-  private googleRoadmapLayer: L.TileLayer | null = null;
-  private googleSatelliteLayer: L.TileLayer | null = null;
-  private googleTerrainLayer: L.TileLayer | null = null;
+  // Google Maps Base Tile Layers
+  private currentTileLayer: any = null;
+  private googleRoadmapLayer: any = null;
+  private googleSatelliteLayer: any = null;
 
   activeFilter = signal<MapCategoryFilter>('all');
-  activeMapType = signal<'roadmap' | 'satellite' | 'terrain'>('roadmap');
+  activeMapType = signal<'roadmap' | 'satellite'>('roadmap');
   selectedItem = signal<MapProject | null>(null);
   filteredProjects = signal<MapProject[]>([]);
   
@@ -42,7 +40,24 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
     gis: 0
   });
 
-  constructor(private projectLocationService: ProjectLocationService) {}
+  private isBrowser: boolean;
+
+  constructor(
+    private projectLocationService: ProjectLocationService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  private getL(): any {
+    if (typeof window !== 'undefined') {
+      if (!(window as any).L && LeafletModule) {
+        (window as any).L = LeafletModule;
+      }
+      return (window as any).L || LeafletModule;
+    }
+    return LeafletModule;
+  }
 
   ngOnInit() {
     this.activeFilter.set(this.filterDomain);
@@ -50,9 +65,11 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.initMap();
-    }, 100);
+    if (this.isBrowser) {
+      setTimeout(() => {
+        this.initMap();
+      }, 150);
+    }
   }
 
   ngOnDestroy() {
@@ -73,7 +90,7 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.renderMarkersOnMap();
   }
 
-  setMapType(type: 'roadmap' | 'satellite' | 'terrain') {
+  setMapType(type: 'roadmap' | 'satellite') {
     this.activeMapType.set(type);
     if (!this.map) return;
 
@@ -83,8 +100,6 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (type === 'satellite' && this.googleSatelliteLayer) {
       this.currentTileLayer = this.googleSatelliteLayer;
-    } else if (type === 'terrain' && this.googleTerrainLayer) {
-      this.currentTileLayer = this.googleTerrainLayer;
     } else if (this.googleRoadmapLayer) {
       this.currentTileLayer = this.googleRoadmapLayer;
     }
@@ -98,82 +113,86 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
   private initMap() {
     if (!this.mapContainer || this.map) return;
 
-    this.map = L.map(this.mapContainer.nativeElement, {
-      center: this.initialCenter,
-      zoom: this.initialZoom,
-      zoomControl: true,
-      scrollWheelZoom: false
-    });
+    const L = this.getL();
 
-    // 1. Google Maps Roadmap Layer (Standard crisp Google Streets)
-    this.googleRoadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-      maxZoom: 20,
-      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-      attribution: '&copy; <a href="https://maps.google.com" target="_blank">Google Maps</a>'
-    });
+    try {
+      this.map = L.map(this.mapContainer.nativeElement, {
+        center: this.initialCenter,
+        zoom: this.initialZoom,
+        zoomControl: true,
+        scrollWheelZoom: false
+      });
 
-    // 2. Google Maps Satellite Hybrid Layer (High-res satellite + road overlay)
-    this.googleSatelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-      maxZoom: 20,
-      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-      attribution: '&copy; <a href="https://maps.google.com" target="_blank">Google Maps Satellite</a>'
-    });
+      // 1. Google Maps Roadmap Layer (Standard clear street tiles)
+      this.googleRoadmapLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution: '&copy; Google Maps'
+      });
 
-    // 3. Google Maps Terrain Layer
-    this.googleTerrainLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
-      maxZoom: 20,
-      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-      attribution: '&copy; <a href="https://maps.google.com" target="_blank">Google Maps Terrain</a>'
-    });
+      // 2. Google Maps Satellite Hybrid Layer (High-res satellite + roads/places)
+      this.googleSatelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution: '&copy; Google Maps Satellite'
+      });
 
-    // Add initial layer (Google Roadmap)
-    this.currentTileLayer = this.googleRoadmapLayer;
-    this.currentTileLayer.addTo(this.map);
+      // Add default Google Roadmap layer
+      this.currentTileLayer = this.googleRoadmapLayer;
+      this.currentTileLayer.addTo(this.map);
 
-    // Initialize MarkerClusterGroup with spiderfying and custom cluster icon
-    this.clusterGroup = (L as any).markerClusterGroup({
-      showCoverageOnHover: false,
-      maxClusterRadius: 35,
-      spiderfyOnMaxZoom: true,
-      spiderfyDistanceMultiplier: 1.6,
-      zoomToBoundsOnClick: true,
-      disableClusteringAtZoom: 17,
-      iconCreateFunction: (cluster: any) => {
-        const count = cluster.getChildCount();
-        return L.divIcon({
-          html: `<div class="custom-solar-cluster">
-                   <span class="cluster-icon">☀</span>
-                   <span class="cluster-num">${count}</span>
-                 </div>`,
-          className: 'custom-cluster-wrapper',
-          iconSize: [42, 42],
-          iconAnchor: [21, 21]
+      // Initialize Cluster group if available, or fallback to layerGroup
+      if (typeof L.markerClusterGroup === 'function') {
+        this.clusterGroup = L.markerClusterGroup({
+          showCoverageOnHover: false,
+          maxClusterRadius: 35,
+          spiderfyOnMaxZoom: true,
+          spiderfyDistanceMultiplier: 1.6,
+          zoomToBoundsOnClick: true,
+          disableClusteringAtZoom: 17,
+          iconCreateFunction: (cluster: any) => {
+            const count = cluster.getChildCount();
+            return L.divIcon({
+              html: `<div class="custom-solar-cluster">
+                       <span class="cluster-icon">☀</span>
+                       <span class="cluster-num">${count}</span>
+                     </div>`,
+              className: 'custom-cluster-wrapper',
+              iconSize: [42, 42],
+              iconAnchor: [21, 21]
+            });
+          }
         });
+      } else {
+        this.clusterGroup = L.layerGroup();
       }
-    });
 
-    this.map.addLayer(this.clusterGroup);
-    this.renderMarkersOnMap();
+      this.map.addLayer(this.clusterGroup);
+      this.renderMarkersOnMap();
 
-    setTimeout(() => {
-      this.map?.invalidateSize();
-    }, 300);
+      setTimeout(() => {
+        this.map?.invalidateSize();
+      }, 300);
+    } catch (err) {
+      console.error('Error initializing Leaflet map:', err);
+    }
   }
 
   private renderMarkersOnMap() {
     if (!this.map || !this.clusterGroup) return;
 
+    const L = this.getL();
     this.clusterGroup.clearLayers();
     this.markerMap.clear();
 
-    const bounds: L.LatLngExpression[] = [];
+    const bounds: any[] = [];
     const projects = this.filteredProjects();
 
     projects.forEach(item => {
-      const latLng: [number, number] = [item.lat, item.lng];
+      const latLng = [item.lat, item.lng];
       bounds.push(latLng);
 
-      const customIcon = this.createCustomIcon(item.category, item.isHq);
+      const customIcon = this.createCustomIcon(L, item.category, item.isHq);
       const marker = L.marker(latLng, { icon: customIcon });
 
       const popupHtml = this.buildPopupHtml(item);
@@ -189,7 +208,11 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Smart bounds fitting
     if (bounds.length > 0 && this.map) {
-      this.map.fitBounds(L.latLngBounds(bounds), { padding: [45, 45], maxZoom: 14 });
+      try {
+        this.map.fitBounds(L.latLngBounds(bounds), { padding: [45, 45], maxZoom: 14 });
+      } catch (e) {
+        console.warn('fitBounds error:', e);
+      }
     }
   }
 
@@ -240,7 +263,7 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
     `;
   }
 
-  private createCustomIcon(category: 'solar' | 'residential' | 'gis' | 'hq', isHq?: boolean): L.DivIcon {
+  private createCustomIcon(L: any, category: 'solar' | 'residential' | 'gis' | 'hq', isHq?: boolean): any {
     let pinClass = 'pin-gis';
     let symbolSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>`;
 
@@ -268,10 +291,13 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.selectedItem.set(item);
     const marker = this.markerMap.get(item.id);
 
-    if (marker && this.clusterGroup && this.map) {
+    if (marker && this.clusterGroup && typeof this.clusterGroup.zoomToShowLayer === 'function') {
       this.clusterGroup.zoomToShowLayer(marker, () => {
         marker.openPopup();
       });
+    } else if (marker && this.map) {
+      this.map.flyTo([item.lat, item.lng], 15, { duration: 1.2 });
+      marker.openPopup();
     } else if (this.map) {
       this.map.flyTo([item.lat, item.lng], 15, { duration: 1.2 });
     }
