@@ -41,6 +41,7 @@
             "scripts": [],
             "allowedCommonJsDependencies": [
               "leaflet",
+              "leaflet.markercluster",
               "canvas-confetti"
             ]
           },

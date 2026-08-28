@@ -1,60 +1,105 @@
 <div class="interactive-map-wrapper">
-  <!-- Map Header Bar with Filters -->
+  <!-- Map Header Bar with Dynamic Filters & Google Layer Toggles -->
   <div class="map-controls-bar">
     <div class="map-title-info">
       <div class="live-dot"></div>
       <h4>Interactive Geospatial &amp; Solar Installation Map</h4>
     </div>
 
+    <!-- Right Controls: Category Filters & Google Map Layer Switcher -->
     <div class="map-filter-pills">
+      <!-- Category Filter Pills -->
       <button class="filter-btn" [class.active]="activeFilter() === 'all'" (click)="setFilter('all')">
-        All Sites ({{ allMarkers.length }})
+        All Sites ({{ categoryCounts().all }})
       </button>
+
       <button class="filter-btn btn-solar-filter" [class.active]="activeFilter() === 'solar'" (click)="setFilter('solar')">
-        ☀️ Solar Plants
+        ☀️ Solar ({{ categoryCounts().solar }})
       </button>
+
+      <button class="filter-btn btn-res-filter" [class.active]="activeFilter() === 'residential'" (click)="setFilter('residential')">
+        🏡 Residential ({{ categoryCounts().residential }})
+      </button>
+
       <button class="filter-btn btn-gis-filter" [class.active]="activeFilter() === 'gis'" (click)="setFilter('gis')">
-        🛰️ GIS Surveys
+        🛰️ GIS ({{ categoryCounts().gis }})
       </button>
+
+      <!-- Google Map Base Layer Switcher -->
+      <div class="map-layer-toggles">
+        <button class="layer-toggle-btn" 
+                [class.active]="activeMapType() === 'roadmap'" 
+                (click)="setMapType('roadmap')" 
+                title="Google Maps Roadmap">
+          🗺️ Google Map
+        </button>
+        <button class="layer-toggle-btn" 
+                [class.active]="activeMapType() === 'satellite'" 
+                (click)="setMapType('satellite')" 
+                title="Google Maps Satellite Hybrid">
+          🛰️ Satellite
+        </button>
+      </div>
+
+      <!-- Reset View Button -->
       <button class="filter-btn btn-reset" (click)="resetView()" title="Reset to Central India HQ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-        <span>Nagpur HQ</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        <span>Reset</span>
       </button>
     </div>
   </div>
 
   <!-- Map Layout (Canvas + Sidebar) -->
   <div class="map-main-layout" [class.has-sidebar]="showSidebar">
-    <!-- Leaflet Render Container -->
+    <!-- Leaflet Render Canvas -->
     <div #mapContainer class="leaflet-render-canvas"></div>
 
     <!-- Quick Location Selection Sidebar -->
     @if (showSidebar) {
       <div class="map-locations-sidebar">
         <div class="sidebar-header">
-          <h5>Project Locations ({{ filteredMarkers().length }})</h5>
-          <span class="subtext">Click to fly to site coordinates</span>
+          <div class="sidebar-header-row">
+            <h5>Project Locations ({{ filteredProjects().length }})</h5>
+            <span class="live-indicator-pill">● Active Map</span>
+          </div>
+          <span class="subtext">Click any site to fly to coordinates and view details</span>
         </div>
 
         <div class="sidebar-list">
-          @for (item of filteredMarkers(); track item.id) {
+          @for (item of filteredProjects(); track item.id) {
             <div class="location-item-card" 
                  [class.active]="selectedItem()?.id === item.id"
                  [class.is-hq]="item.isHq"
-                 [class.is-solar]="item.domain === 'solar'"
-                 [class.is-gis]="item.domain === 'gis'"
+                 [class.is-residential]="item.category === 'residential'"
+                 [class.is-solar]="item.category === 'solar'"
+                 [class.is-gis]="item.category === 'gis'"
                  (click)="focusMarker(item)">
+              
               <div class="item-icon-tag">
                 @if (item.isHq) { 🏢 }
-                @else if (item.domain === 'solar') { ☀️ }
+                @else if (item.category === 'residential') { 🏡 }
+                @else if (item.category === 'solar') { ☀️ }
                 @else { 🛰️ }
               </div>
+
               <div class="item-info">
-                <span class="item-category">{{ item.category }}</span>
-                <h6 class="item-name">{{ item.title }}</h6>
+                <div class="item-meta-top">
+                  <span class="item-category">
+                    @if (item.category === 'residential') { RESIDENTIAL SOLAR }
+                    @else { {{ item.projectType }} }
+                  </span>
+                  <span class="item-status-tag">✓ {{ item.status }}</span>
+                </div>
+
+                <h6 class="item-name">{{ item.projectName }}</h6>
+                <div class="item-company">{{ item.companyName }}</div>
                 <p class="item-loc">📍 {{ item.location }}</p>
-                <div class="item-metric">
-                  {{ item.capacityOrScale }}
+
+                <div class="item-bottom-row">
+                  @if (item.capacityOrScale) {
+                    <span class="item-metric">⚡ {{ item.capacityOrScale }}</span>
+                  }
+                  <span class="item-coords font-mono-num">{{ item.lat.toFixed(4) }}°, {{ item.lng.toFixed(4) }}°</span>
                 </div>
               </div>
             </div>

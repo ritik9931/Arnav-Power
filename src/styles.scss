@@ -1,3 +1,6 @@
+@import 'leaflet.markercluster/dist/MarkerCluster.css';
+@import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+
 /* ==========================================================================
    ARNAV POWER SOLUTION SERVICES - ENTERPRISE DESIGN SYSTEM
    Theme: Precision GIS & Clean Solar Energy Infrastructure
@@ -444,50 +447,217 @@ button, input, select, textarea {
   font-weight: 500;
 }
 
-/* LEAFLET CUSTOM POPUPS & MARKERS */
-.leaflet-popup-content-wrapper {
-  border-radius: 16px !important;
-  box-shadow: 0 15px 35px rgba(10, 37, 64, 0.18) !important;
-  padding: 4px !important;
-  overflow: hidden;
-  border: 1px solid rgba(0, 163, 255, 0.2);
-}
-
-.leaflet-popup-content {
-  margin: 12px 14px !important;
-  line-height: 1.4 !important;
+.custom-map-pin-wrapper {
+  background: transparent !important;
+  border: none !important;
 }
 
 .custom-map-pin {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-  border: 2.5px solid #FFFFFF;
-  transition: transform 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 2px #FFFFFF;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-}
 
-.custom-map-pin:hover {
-  transform: scale(1.2);
+  &:hover {
+    transform: scale(1.22);
+    z-index: 999;
+  }
 }
 
 .pin-hq {
-  background: linear-gradient(135deg, #0052CC, #0A2540);
+  background: linear-gradient(135deg, #0A2540, #0052CC);
   color: #FFFFFF;
 }
 
+.pin-residential {
+  background: linear-gradient(135deg, #FF7A00, #EA580C);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.45), 0 0 0 2px #FFFFFF;
+}
+
 .pin-solar {
-  background: linear-gradient(135deg, #FFB020, #FF7A00);
+  background: linear-gradient(135deg, #FFB020, #D97706);
   color: #FFFFFF;
 }
 
 .pin-gis {
   background: linear-gradient(135deg, #00C2FF, #0052CC);
   color: #FFFFFF;
+}
+
+/* CUSTOM CLUSTER ICON */
+.custom-cluster-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-solar-cluster {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF7A00, #D97706);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.85rem;
+  box-shadow: 0 6px 16px rgba(217, 119, 6, 0.45), 0 0 0 3px #FFFFFF;
+  transition: all 0.25s ease;
+  cursor: pointer;
+
+  .cluster-icon {
+    font-size: 0.8rem;
+  }
+
+  .cluster-num {
+    font-weight: 800;
+    font-size: 0.88rem;
+  }
+
+  &:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 22px rgba(217, 119, 6, 0.65), 0 0 0 4px #FFFFFF;
+  }
+}
+
+/* LEAFLET POPUP CARD OVERRIDES */
+.leaflet-popup-content-wrapper {
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(10, 37, 64, 0.22);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.map-popup-card {
+  padding: 1rem 1.15rem;
+  font-family: var(--font-body);
+  background: #FFFFFF;
+  min-width: 240px;
+
+  .popup-badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .popup-badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+
+    &.badge-residential {
+      background: #FFF7ED;
+      color: #C2410C;
+      border: 1px solid #FFEDD5;
+    }
+
+    &.badge-solar {
+      background: #FEF3C7;
+      color: #B45309;
+      border: 1px solid #FDE68A;
+    }
+
+    &.badge-gis {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #DBEAFE;
+    }
+
+    &.badge-hq {
+      background: #0A2540;
+      color: #FFFFFF;
+    }
+  }
+
+  .popup-status {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #15803D;
+    background: #DCFCE7;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+  }
+
+  .popup-title {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+    margin: 0 0 0.2rem 0;
+    line-height: 1.25;
+  }
+
+  .popup-company {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-primary-600);
+    margin-bottom: 0.35rem;
+  }
+
+  .popup-location {
+    font-size: 0.78rem;
+    color: var(--color-text-body);
+    margin-bottom: 0.35rem;
+  }
+
+  .popup-metric {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--color-primary-700);
+    background: #F1F5F9;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.45rem;
+  }
+
+  .popup-coords {
+    font-size: 0.72rem;
+    color: #64748B;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+  }
+
+  .popup-btn {
+    display: block;
+    text-align: center;
+    background: var(--color-primary-600);
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.5rem 0.85rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: var(--color-primary-700);
+      color: #FFFFFF;
+    }
+  }
 }
 
 /* UTILITY HELPERS */
