@@ -120,7 +120,7 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
         center: this.initialCenter,
         zoom: this.initialZoom,
         zoomControl: true,
-        scrollWheelZoom: false
+        scrollWheelZoom: true
       });
 
       // 1. Google Maps Roadmap Layer (Standard clear street tiles)
@@ -228,13 +228,15 @@ export class LeafletMapComponent implements OnInit, AfterViewInit, OnDestroy {
     if (isHq) {
       badgeClass = 'badge-hq';
       icon = '🏢';
+      badgeText = item.projectType;
     } else if (isResidential) {
       badgeClass = 'badge-residential';
       icon = '☀';
-      badgeText = 'RESIDENTIAL SOLAR INSTALLATION';
+      badgeText = 'RESIDENTIAL SOLAR';
     } else if (isSolar) {
       badgeClass = 'badge-solar';
       icon = '☀️';
+      badgeText = item.projectType.toUpperCase();
     }
 
     return `

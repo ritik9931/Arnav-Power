@@ -57,7 +57,7 @@ export class ProjectLocationService {
       id: p.id,
       projectName: p.title,
       companyName: 'Arnav Power Solution Services',
-      projectType: `${p.category} Solar Installation`,
+      projectType: `${p.category} Solar`,
       category: 'solar' as const,
       location: p.location,
       capacityOrScale: `${p.capacityKw} kWp (${p.panelsInstalled} Panels)`,
