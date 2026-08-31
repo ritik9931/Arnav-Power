@@ -6,6 +6,15 @@ import { StatsCounterComponent } from '../../shared/components/stats-counter/sta
 import { ClientService } from '../../core/services/client.service';
 import { StatCounterItem } from '../../core/models/client.model';
 
+export interface LeaderMember {
+  name: string;
+  designation: string;
+  bio: string;
+  expertise: string;
+  image: string;
+  imagePosition?: string;
+}
+
 @Component({
   selector: 'app-about',
   standalone: true,
@@ -16,27 +25,38 @@ import { StatCounterItem } from '../../core/models/client.model';
 export class AboutComponent implements OnInit {
   stats: StatCounterItem[] = [];
 
-  leadershipTeam = [
+  leadershipTeam: LeaderMember[] = [
     {
-      name: 'Er. Rajesh V. Sharma',
-      designation: 'Managing Director & Principal GIS Specialist',
-      bio: 'Over 18 years of leadership across national geospatial infrastructure, cadastral surveying, and municipal utility GIS programs.',
-      expertise: 'Geodetic Surveying, RTK GNSS, Spatial Databases',
-      image: 'assets/images/team/rajesh-sharma.jpg'
+      name: 'Kishor R. Khotele',
+      designation: 'Director',
+      bio: 'Spearheads corporate strategy, public sector enterprise partnerships, and large-scale infrastructure expansion across Maharashtra and Central India.',
+      expertise: 'Executive Leadership, Strategic Infrastructure & Enterprise Expansion',
+      image: 'assets/images/team/kishor-khotele.jpg',
+      imagePosition: 'center 10%'
     },
     {
-      name: 'Er. Amit K. Deshmukh',
-      designation: 'Director – Solar Engineering & Turnkey EPC',
-      bio: 'Certified Solar Energy Professional with 14+ years of experience leading 100+ MW turnkey commercial and industrial rooftop solar projects.',
-      expertise: 'Solar EPC, PVSyst, High-Tension Synchronization, CEIG',
-      image: 'assets/images/team/amit-deshmukh.jpg'
+      name: 'Mangesh K. Munishwar',
+      designation: 'Solar Head',
+      bio: 'Leads turnkey solar engineering, commercial & industrial EPC projects, residential rooftop installations, and DISCOM grid synchronizations.',
+      expertise: 'Solar EPC, Grid Synchronization, Net Metering & PM Surya Ghar',
+      image: 'assets/images/team/mangesh-munishwar.jpg',
+      imagePosition: 'center 8%'
     },
     {
-      name: 'Er. Priya S. Patil',
-      designation: 'Head of Photogrammetry & UAV Remote Sensing',
-      bio: 'Specialist in drone LiDAR point clouds, 3D surface modeling, and multi-spectral satellite remote sensing for infrastructure corridors.',
-      expertise: 'Drone LiDAR, Orthomosaics, 3D Elevation Modeling',
-      image: 'assets/images/team/priya-patil.jpg'
+      name: 'Rajshree K. Khotele',
+      designation: 'Admin',
+      bio: 'Directs corporate administration, regulatory compliance, quality governance, procurement management, and operational resource planning.',
+      expertise: 'Corporate Governance, Administrative Operations & Compliance',
+      image: 'assets/images/team/rajshree-khotele.jpg',
+      imagePosition: 'center 12%'
+    },
+    {
+      name: 'Gaurav J. Khotele',
+      designation: 'GIS Head',
+      bio: 'Leads high-precision geospatial surveys, drone photogrammetry, cadastral landbase mapping, RTK GNSS surveying, and spatial databases.',
+      expertise: 'GIS & Cadastral Mapping, Drone LiDAR & Geodetic Surveys',
+      image: 'assets/images/team/gaurav-khotele.jpg',
+      imagePosition: 'center 12%'
     }
   ];
 

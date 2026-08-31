@@ -86,7 +86,10 @@
       @for (leader of leadershipTeam; track leader.name) {
         <div class="leader-card">
           <div class="leader-img-box">
-            <img [src]="leader.image" [alt]="leader.name" class="leader-img" />
+            <img [src]="leader.image" 
+                 [alt]="leader.name" 
+                 class="leader-img" 
+                 [style.object-position]="leader.imagePosition || 'center top'" />
           </div>
           <div class="leader-info">
             <h3 class="leader-name">{{ leader.name }}</h3>
