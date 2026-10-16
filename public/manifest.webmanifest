@@ -1,0 +1,21 @@
+{
+  "name": "ARNAV POWER TECHNOLOGY LLP",
+  "short_name": "Arnav Power",
+  "description": "GIS Survey & Solar Power Infrastructure Solutions across India",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A2540",
+  "theme_color": "#0A2540",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/assets/images/logo/arnav-logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"
+    }
+  ]
+}

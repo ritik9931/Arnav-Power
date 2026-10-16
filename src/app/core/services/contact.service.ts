@@ -16,7 +16,7 @@ export interface ContactFormData {
 })
 export class ContactService {
   readonly companyDetails = {
-    name: 'Arnav Power Solution Services',
+    name: 'ARNAV POWER TECHNOLOGY LLP',
     // Corporate Address (Main Branch Location)
     corporateAddressTitle: 'Corporate Address (Main Branch)',
     addressLine1: 'Near Bus Stand, Main Road, Wadegaon',

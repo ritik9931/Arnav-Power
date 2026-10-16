@@ -55,7 +55,7 @@ export class ClientService {
       logoBg: '#0A2540',
       initials: 'MSEDCL',
       rating: 5,
-      testimonial: 'Arnav Power Solution Services executed high-density electrical consumer indexing and substation asset geocoding with remarkable speed and precision.',
+      testimonial: 'ARNAV POWER TECHNOLOGY LLP executed high-density electrical consumer indexing and substation asset geocoding with remarkable speed and precision.',
       spokesperson: 'Superintending Engineer',
       designation: 'MSEDCL Urban Infrastructure Division'
     },
@@ -125,7 +125,7 @@ export class ClientService {
       logoBg: '#F59E0B',
       initials: 'APEX',
       rating: 5,
-      testimonial: 'Arnav Power Solution delivered a high-yield solar installation with elevated structural pergolas that provide covered parking while generating clean energy.',
+      testimonial: 'ARNAV POWER TECHNOLOGY LLP delivered a high-yield solar installation with elevated structural pergolas that provide covered parking while generating clean energy.',
       spokesperson: 'VP - Infrastructure',
       designation: 'Apex Logistics Parks'
     }

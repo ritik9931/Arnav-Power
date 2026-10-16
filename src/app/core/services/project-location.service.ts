@@ -56,7 +56,7 @@ export class ProjectLocationService {
     const commercialSolar = this.solarService.getProjects().map(p => ({
       id: p.id,
       projectName: p.title,
-      companyName: 'Arnav Power Solution Services',
+      companyName: 'ARNAV POWER TECHNOLOGY LLP',
       projectType: `${p.category} Solar`,
       category: 'solar' as const,
       location: p.location,
@@ -76,7 +76,7 @@ export class ProjectLocationService {
     const gisProjects = this.projectService.getGisProjects().map(g => ({
       id: g.id,
       projectName: g.title,
-      companyName: 'Arnav Power Solution Services',
+      companyName: 'ARNAV POWER TECHNOLOGY LLP',
       projectType: g.category,
       category: 'gis' as const,
       location: g.location,

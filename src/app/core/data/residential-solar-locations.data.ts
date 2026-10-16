@@ -57,7 +57,7 @@ const RAW_RESIDENTIAL_COORDINATES: Array<{ lat: number; lng: number }> = [
 export const RESIDENTIAL_SOLAR_INSTALLATIONS: MapProject[] = RAW_RESIDENTIAL_COORDINATES.map((point, index) => ({
   id: `residential-solar-${index + 1}`,
   projectName: `Residential Solar Installation ${index + 1}`,
-  companyName: 'Arnav Power Solution Services',
+  companyName: 'ARNAV POWER TECHNOLOGY LLP',
   projectType: 'Residential Solar Installation',
   category: 'residential',
   location: 'Maharashtra, India',
